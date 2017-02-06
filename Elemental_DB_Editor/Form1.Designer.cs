@@ -34,6 +34,7 @@
             this.comboBox_Versions = new System.Windows.Forms.ComboBox();
             this.listBox_Version = new System.Windows.Forms.ListBox();
             this.listBox_Mods = new System.Windows.Forms.ListBox();
+            this.button_addmod = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Login
@@ -89,11 +90,23 @@
             this.listBox_Mods.TabIndex = 6;
             this.listBox_Mods.DoubleClick += new System.EventHandler(this.listBox_Mods_DoubleClick);
             // 
+            // button_addmod
+            // 
+            this.button_addmod.Enabled = false;
+            this.button_addmod.Location = new System.Drawing.Point(120, 233);
+            this.button_addmod.Name = "button_addmod";
+            this.button_addmod.Size = new System.Drawing.Size(22, 22);
+            this.button_addmod.TabIndex = 7;
+            this.button_addmod.Text = "+";
+            this.button_addmod.UseVisualStyleBackColor = true;
+            this.button_addmod.Click += new System.EventHandler(this.button_addmod_Click);
+            // 
             // ER_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.button_addmod);
             this.Controls.Add(this.listBox_Mods);
             this.Controls.Add(this.listBox_Version);
             this.Controls.Add(this.comboBox_Versions);
@@ -118,6 +131,7 @@
         private System.Windows.Forms.ComboBox comboBox_Versions;
         private System.Windows.Forms.ListBox listBox_Version;
         private System.Windows.Forms.ListBox listBox_Mods;
+        private System.Windows.Forms.Button button_addmod;
     }
 }
 

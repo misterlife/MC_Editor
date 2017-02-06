@@ -11,12 +11,13 @@ namespace Elemental_DB_Editor
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        public static ER_Form erForm = new ER_Form();
+        public static Form_AddMod modForm = new Form_AddMod();
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ER_Form());
+            Application.Run(erForm);
         }
     }
 }

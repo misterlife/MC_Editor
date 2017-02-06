@@ -15,6 +15,7 @@ namespace Elemental_DB_Editor
     {
         public string ERConnectionString, ERserver= "51.255.41.80";
         public string[] SList_Mods;
+        public List<string> AllMods = new List<string>();
         public ER_Form()
         {
             InitializeComponent();
@@ -66,6 +67,7 @@ namespace Elemental_DB_Editor
             dataReader.Close();
             conn.Close();
             button_Login.Enabled = true;
+            button_addmod.Enabled = true;
         }
 
         private void button_submit_Click(object sender, EventArgs e)
@@ -94,6 +96,29 @@ namespace Elemental_DB_Editor
         }
 
         private void comboBox_Versions_SelectedValueChanged(object sender, EventArgs e)
+        {
+            RefreshV();
+        }
+
+        private void button_addmod_Click(object sender, EventArgs e)
+        {
+            new Form_AddMod().Show();
+            button_addmod.Visible = false;
+        }
+
+        private void listBox_Mods_DoubleClick(object sender, EventArgs e)
+        {
+            if (listBox_Mods.SelectedItem != null)
+            {
+                string selected = listBox_Mods.SelectedItem.ToString();
+                listBox_Version.Items.Add(selected);
+                listBox_Mods.Items.Remove(selected);
+            }
+        }
+        public void ABOn(){
+            button_addmod.Visible = true;
+        }
+        public void RefreshV()
         {
             button_Login.Visible = false;
             button_submit.Visible = true;
@@ -126,11 +151,13 @@ namespace Elemental_DB_Editor
             query = "SELECT * FROM ElementalRealms_ModdedLauncher.Mods";
             cmd = new MySqlCommand(query, conn);
             dataReader = cmd.ExecuteReader();
+            AllMods.Clear();
             while (dataReader.Read())
             {
                 string mod = dataReader["FileName"].ToString();
-                if(!listBox_Version.Items.Contains(mod))
-                listBox_Mods.Items.Add(mod);
+                if (!listBox_Version.Items.Contains(mod))
+                    listBox_Mods.Items.Add(mod);
+                AllMods.Add(mod);
             }
 
             button_submit.Enabled = true;
@@ -138,16 +165,6 @@ namespace Elemental_DB_Editor
             listBox_Mods.Enabled = true;
             dataReader.Close();
             conn.CloseAsync();
-        }
-
-        private void listBox_Mods_DoubleClick(object sender, EventArgs e)
-        {
-            if (listBox_Mods.SelectedItem != null)
-            {
-                string selected = listBox_Mods.SelectedItem.ToString();
-                listBox_Version.Items.Add(selected);
-                listBox_Mods.Items.Remove(selected);
-            }
         }
     }
 }
