@@ -13,6 +13,7 @@ namespace Elemental_DB_Editor
         /// </summary>
         public static ER_Form erForm = new ER_Form();
         public static Form_AddMod modForm = new Form_AddMod();
+        public static Form_CVersion VersionForm = new Form_CVersion();
         [STAThread]
         static void Main()
         {

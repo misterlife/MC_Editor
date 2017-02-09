@@ -35,6 +35,7 @@
             this.listBox_Version = new System.Windows.Forms.ListBox();
             this.listBox_Mods = new System.Windows.Forms.ListBox();
             this.button_addmod = new System.Windows.Forms.Button();
+            this.button_CVersion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Login
@@ -54,7 +55,7 @@
             this.button_submit.Name = "button_submit";
             this.button_submit.Size = new System.Drawing.Size(130, 25);
             this.button_submit.TabIndex = 3;
-            this.button_submit.Text = "Update modlist";
+            this.button_submit.Text = "Commit Modlist";
             this.button_submit.UseVisualStyleBackColor = true;
             this.button_submit.Visible = false;
             this.button_submit.Click += new System.EventHandler(this.button_submit_Click);
@@ -66,7 +67,7 @@
             this.comboBox_Versions.FormattingEnabled = true;
             this.comboBox_Versions.Location = new System.Drawing.Point(148, 15);
             this.comboBox_Versions.Name = "comboBox_Versions";
-            this.comboBox_Versions.Size = new System.Drawing.Size(130, 21);
+            this.comboBox_Versions.Size = new System.Drawing.Size(107, 21);
             this.comboBox_Versions.TabIndex = 4;
             this.comboBox_Versions.SelectedValueChanged += new System.EventHandler(this.comboBox_Versions_SelectedValueChanged);
             // 
@@ -101,11 +102,23 @@
             this.button_addmod.UseVisualStyleBackColor = true;
             this.button_addmod.Click += new System.EventHandler(this.button_addmod_Click);
             // 
+            // button_CVersion
+            // 
+            this.button_CVersion.Enabled = false;
+            this.button_CVersion.Location = new System.Drawing.Point(253, 14);
+            this.button_CVersion.Name = "button_CVersion";
+            this.button_CVersion.Size = new System.Drawing.Size(25, 23);
+            this.button_CVersion.TabIndex = 8;
+            this.button_CVersion.Text = "[ ]";
+            this.button_CVersion.UseVisualStyleBackColor = true;
+            this.button_CVersion.Click += new System.EventHandler(this.button_CVersion_Click);
+            // 
             // ER_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.button_CVersion);
             this.Controls.Add(this.button_addmod);
             this.Controls.Add(this.listBox_Mods);
             this.Controls.Add(this.listBox_Version);
@@ -132,6 +145,7 @@
         private System.Windows.Forms.ListBox listBox_Version;
         private System.Windows.Forms.ListBox listBox_Mods;
         private System.Windows.Forms.Button button_addmod;
+        private System.Windows.Forms.Button button_CVersion;
     }
 }
 

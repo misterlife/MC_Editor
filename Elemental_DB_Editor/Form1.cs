@@ -16,6 +16,7 @@ namespace Elemental_DB_Editor
         public string ERConnectionString, ERserver= "51.255.41.80";
         public string[] SList_Mods;
         public List<string> AllMods = new List<string>();
+        public List<string> AllVersions = new List<string>();
         public ER_Form()
         {
             InitializeComponent();
@@ -41,33 +42,12 @@ namespace Elemental_DB_Editor
             ERConnectionString = "server=" + ERserver + ";uid=" + login[0] + ";" +
                                     "pwd=" + login[1] + ";database=ElementalRealms_ModdedLauncher;";
 
-            MySqlConnection conn = new MySqlConnection(ERConnectionString);
-            string query = "SELECT * FROM ElementalRealms_ModdedLauncher.Version";
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            try
-            {
-                conn.Open();
-            }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
-            {
-                Console.Write(ex.Message);
-                MessageBox.Show(ex.Message, "ERealms user error",
-                   MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Environment.Exit(1);
-            }
+            RefreshSV();
 
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-            while (dataReader.Read())
-            {
-                    comboBox_Versions.Items.Add(dataReader["Version_UID"].ToString());
-                    comboBox_Versions.Text = (dataReader["Version_UID"].ToString());
-
-            }
             comboBox_Versions.Enabled = true;
-            dataReader.Close();
-            conn.Close();
             button_Login.Enabled = true;
             button_addmod.Enabled = true;
+            button_CVersion.Enabled = true;
         }
 
         private void button_submit_Click(object sender, EventArgs e)
@@ -83,6 +63,10 @@ namespace Elemental_DB_Editor
             conn.CloseAsync();
             MessageBox.Show("Sucess", "ERealms Feedback",
                                  MessageBoxButtons.OK, MessageBoxIcon.None);
+            RefreshSV();
+            comboBox_Versions.Enabled = true;
+            listBox_Mods.Enabled = true;
+            listBox_Version.Enabled = true;
         }
 
         private void listBox_Version_DoubleClick(object sender, EventArgs e)
@@ -97,7 +81,7 @@ namespace Elemental_DB_Editor
 
         private void comboBox_Versions_SelectedValueChanged(object sender, EventArgs e)
         {
-            RefreshV();
+            RefreshLV();
         }
 
         private void button_addmod_Click(object sender, EventArgs e)
@@ -118,7 +102,54 @@ namespace Elemental_DB_Editor
         public void ABOn(){
             button_addmod.Visible = true;
         }
-        public void RefreshV()
+        public void VCOn()
+        {
+            button_CVersion.Enabled = true;
+        }
+
+        private void button_CVersion_Click(object sender, EventArgs e)
+        {
+            new Form_CVersion().Show();
+            button_CVersion.Enabled = false;
+        }
+        public string SelectedVersion()
+        {
+            return comboBox_Versions.Text;
+        }
+        public void RefreshSV()
+        {
+            MySqlConnection conn = new MySqlConnection(ERConnectionString);
+            string query = "SELECT * FROM ElementalRealms_ModdedLauncher.Version";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            try
+            {
+                conn.Open();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                Console.Write(ex.Message);
+                MessageBox.Show(ex.Message, "ERealms user error",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(1);
+            }
+            comboBox_Versions.Items.Clear();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+            AllMods.Clear();
+            string tmp41=null;
+            AllVersions.Clear();
+            while (dataReader.Read())
+            {
+                tmp41 = dataReader["Version_UID"].ToString();
+                comboBox_Versions.Items.Add(tmp41);
+                AllVersions.Add(tmp41);
+            }
+
+            comboBox_Versions.Text = (tmp41);
+            dataReader.Close();
+            conn.Close();
+        }
+
+        public void RefreshLV()
         {
             button_Login.Visible = false;
             button_submit.Visible = true;

@@ -40,7 +40,7 @@ namespace Elemental_DB_Editor
             conn.CloseAsync();
             MessageBox.Show("Added Mod", "ERealms Feedback",
                                  MessageBoxButtons.OK, MessageBoxIcon.None);
-            Program.erForm.RefreshV();
+            Program.erForm.RefreshLV();
         }else
                 MessageBox.Show("The mod you are trying to add exists", "ERealms Feedback",
                                  MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
