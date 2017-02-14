@@ -51,9 +51,9 @@
             // button_submit
             // 
             this.button_submit.Enabled = false;
-            this.button_submit.Location = new System.Drawing.Point(12, 12);
+            this.button_submit.Location = new System.Drawing.Point(35, 12);
             this.button_submit.Name = "button_submit";
-            this.button_submit.Size = new System.Drawing.Size(130, 25);
+            this.button_submit.Size = new System.Drawing.Size(107, 25);
             this.button_submit.TabIndex = 3;
             this.button_submit.Text = "Commit Modlist";
             this.button_submit.UseVisualStyleBackColor = true;
@@ -93,13 +93,13 @@
             // 
             // button_addmod
             // 
-            this.button_addmod.Enabled = false;
-            this.button_addmod.Location = new System.Drawing.Point(120, 233);
+            this.button_addmod.Location = new System.Drawing.Point(12, 12);
             this.button_addmod.Name = "button_addmod";
-            this.button_addmod.Size = new System.Drawing.Size(22, 22);
+            this.button_addmod.Size = new System.Drawing.Size(25, 25);
             this.button_addmod.TabIndex = 7;
             this.button_addmod.Text = "+";
             this.button_addmod.UseVisualStyleBackColor = true;
+            this.button_addmod.Visible = false;
             this.button_addmod.Click += new System.EventHandler(this.button_addmod_Click);
             // 
             // button_CVersion
@@ -126,14 +126,12 @@
             this.Controls.Add(this.button_submit);
             this.Controls.Add(this.button_Login);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(300, 300);
             this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "ER_Form";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ERealms Editor";
             this.Load += new System.EventHandler(this.ER_Form_Load);
+            this.SizeChanged += new System.EventHandler(this.ER_Form_SizeChanged);
             this.ResumeLayout(false);
 
         }
