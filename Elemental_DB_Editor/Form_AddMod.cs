@@ -44,6 +44,8 @@ namespace Elemental_DB_Editor
         }else
                 MessageBox.Show("The mod you are trying to add exists", "ERealms Feedback",
                                  MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            textBox1.Clear();
+            textBox2.Clear();
         }
     }
 }
