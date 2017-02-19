@@ -33,7 +33,7 @@ namespace Elemental_DB_Editor
             string FName = textBox1.Text, FLink = textBox2.Text;
             if (!Program.erForm.AllMods.Contains(FName)) { 
             MySqlConnection conn = new MySqlConnection(Program.erForm.ERConnectionString);
-            string query = "INSERT INTO `ElementalRealms_ModdedLauncher`.`Mods` (`FileName`, `URL`) VALUES ('" + FName + "', '" + FLink + "');";
+            string query = "INSERT INTO `ElementalRealms`.`Mods` (`FileName`, `URL`) VALUES ('" + FName + "', '" + FLink + "');";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             cmd.Connection.Open();
             cmd.ExecuteNonQuery();

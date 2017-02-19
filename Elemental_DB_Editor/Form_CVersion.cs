@@ -46,7 +46,7 @@ namespace Elemental_DB_Editor
 
                 if (Program.erForm.AllVersions.Contains(comboBox_versionEdit.Text))
                 {
-                    string query = "SELECT * FROM ElementalRealms_ModdedLauncher.Version WHERE Version_UID='" + Program.erForm.SelectedVersion() + "'";
+                    string query = "SELECT * FROM ElementalRealms.Version WHERE Version_UID='" + Program.erForm.SelectedVersion() + "'";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
 
                     try
@@ -86,7 +86,7 @@ namespace Elemental_DB_Editor
                 //upload version
                 if (Program.erForm.AllVersions.Contains(comboBox_versionEdit.Text))
                 {
-                    string query = "UPDATE `ElementalRealms_ModdedLauncher`.`Version` SET `Config`='"+textBox_config.Text+"', `Biome`='"+textBox_biome.Text+"', `Script`='"+textBox_script.Text+"', `Forge`='"+textBox_forge.Text+"', `Visable`='"+ Convert.ToInt32(checkBox_Visable.Checked)+"', `Dev`='"+ Convert.ToInt32(checkBox_Dev.Checked) +"', `Badge`='"+textBox_badge.Text+"' WHERE `Version_UID`='"+comboBox_versionEdit.Text+"';";
+                    string query = "UPDATE `ElementalRealms`.`Version` SET `Config`='"+textBox_config.Text+"', `Biome`='"+textBox_biome.Text+"', `Script`='"+textBox_script.Text+"', `Forge`='"+textBox_forge.Text+"', `Visable`='"+ Convert.ToInt32(checkBox_Visable.Checked)+"', `Dev`='"+ Convert.ToInt32(checkBox_Dev.Checked) +"', `Badge`='"+textBox_badge.Text+"' WHERE `Version_UID`='"+comboBox_versionEdit.Text+"';";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Connection.Open();
                     cmd.ExecuteNonQuery();
@@ -99,7 +99,7 @@ namespace Elemental_DB_Editor
                     string IModList = "";
                     if (comboBox_InheritMod.Text!="none")
                     {
-                        string queryI = "SELECT * FROM ElementalRealms_ModdedLauncher.Version WHERE Version_UID='" + comboBox_InheritMod.Text + "'";
+                        string queryI = "SELECT * FROM ElementalRealms.Version WHERE Version_UID='" + comboBox_InheritMod.Text + "'";
                         MySqlCommand cmdI = new MySqlCommand(queryI, conn);
                         try
                         {
@@ -120,7 +120,7 @@ namespace Elemental_DB_Editor
                         conn.Close();
                         dataReader.Close();
                     }
-                    string query = "INSERT INTO `ElementalRealms_ModdedLauncher`.`Version` VALUES ('"+comboBox_versionEdit.Text+"', '"+textBox_config.Text+"', '"+textBox_biome.Text+"', '"+textBox_script.Text+"', '"+textBox_forge.Text+"', '"+IModList+"', '"+ Convert.ToInt32(checkBox_Visable.Checked) + "', '"+ Convert.ToInt32(checkBox_Dev.Checked) + "', '"+textBox_badge.Text+"');";
+                    string query = "INSERT INTO `ElementalRealms`.`Version` VALUES ('"+comboBox_versionEdit.Text+"', '"+textBox_config.Text+"', '"+textBox_biome.Text+"', '"+textBox_script.Text+"', '"+textBox_forge.Text+"', '"+IModList+"', '"+ Convert.ToInt32(checkBox_Visable.Checked) + "', '"+ Convert.ToInt32(checkBox_Dev.Checked) + "', '"+textBox_badge.Text+"');";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Connection.Open();
                     cmd.ExecuteNonQuery();

@@ -40,7 +40,7 @@ namespace Elemental_DB_Editor
             }
 
             ERConnectionString = "server=" + ERserver + ";uid=" + login[0] + ";" +
-                                    "pwd=" + login[1] + ";database=ElementalRealms_ModdedLauncher;";
+                                    "pwd=" + login[1] + ";database=ElementalRealms;";
 
             RefreshSV();
 
@@ -56,7 +56,7 @@ namespace Elemental_DB_Editor
             listBox_Mods.Enabled = false;
             listBox_Version.Enabled = false;
             MySqlConnection conn = new MySqlConnection(ERConnectionString);
-            string query = "UPDATE `ElementalRealms_ModdedLauncher`.`Version` SET `Mods`='"+string.Join(",", listBox_Version.Items.Cast<String>().ToList()) + "' WHERE `Version_UID`='" + comboBox_Versions.Text + "'";
+            string query = "UPDATE `ElementalRealms`.`Version` SET `Mods`='"+string.Join(",", listBox_Version.Items.Cast<String>().ToList()) + "' WHERE `Version_UID`='" + comboBox_Versions.Text + "'";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             cmd.Connection.Open();
             cmd.ExecuteNonQuery();
@@ -119,7 +119,7 @@ namespace Elemental_DB_Editor
         public void RefreshSV()
         {
             MySqlConnection conn = new MySqlConnection(ERConnectionString);
-            string query = "SELECT * FROM ElementalRealms_ModdedLauncher.Version";
+            string query = "SELECT * FROM ElementalRealms.Version";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             try
             {
@@ -162,7 +162,7 @@ namespace Elemental_DB_Editor
             button_Login.Visible = false;
             button_submit.Visible = true;
             MySqlConnection conn = new MySqlConnection(ERConnectionString);
-            string query = "SELECT * FROM ElementalRealms_ModdedLauncher.Version WHERE Version_UID='" + comboBox_Versions.Text + "'";
+            string query = "SELECT * FROM ElementalRealms.Version WHERE Version_UID='" + comboBox_Versions.Text + "'";
             MySqlCommand cmd = new MySqlCommand(query, conn);
 
 
@@ -187,7 +187,7 @@ namespace Elemental_DB_Editor
             listBox_Version.Items.AddRange(SList_Mods);
             dataReader.Close();
 
-            query = "SELECT * FROM ElementalRealms_ModdedLauncher.Mods";
+            query = "SELECT * FROM ElementalRealms.Mods";
             cmd = new MySqlCommand(query, conn);
             dataReader = cmd.ExecuteReader();
             AllMods.Clear();
