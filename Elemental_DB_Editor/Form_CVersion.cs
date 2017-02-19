@@ -46,7 +46,7 @@ namespace Elemental_DB_Editor
 
                 if (Program.erForm.AllVersions.Contains(comboBox_versionEdit.Text))
                 {
-                    string query = "SELECT * FROM ElementalRealms.Version WHERE Version_UID='" + Program.erForm.SelectedVersion() + "'";
+                    string query = "SELECT * FROM ElementalRealms.Version WHERE Version_UID='" + comboBox_versionEdit.Text + "'";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
 
                     try
