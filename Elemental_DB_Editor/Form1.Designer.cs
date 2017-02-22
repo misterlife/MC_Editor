@@ -78,6 +78,7 @@
             this.listBox_Version.Location = new System.Drawing.Point(148, 43);
             this.listBox_Version.Name = "listBox_Version";
             this.listBox_Version.Size = new System.Drawing.Size(130, 212);
+            this.listBox_Version.Sorted = true;
             this.listBox_Version.TabIndex = 5;
             this.listBox_Version.DoubleClick += new System.EventHandler(this.listBox_Version_DoubleClick);
             // 
@@ -88,6 +89,7 @@
             this.listBox_Mods.Location = new System.Drawing.Point(12, 43);
             this.listBox_Mods.Name = "listBox_Mods";
             this.listBox_Mods.Size = new System.Drawing.Size(130, 212);
+            this.listBox_Mods.Sorted = true;
             this.listBox_Mods.TabIndex = 6;
             this.listBox_Mods.DoubleClick += new System.EventHandler(this.listBox_Mods_DoubleClick);
             // 
