@@ -18,10 +18,6 @@ namespace Elemental_DB_Editor
             InitializeComponent();
         }
 
-        private void Form_AddMod_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void Form_AddMod_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -30,20 +26,30 @@ namespace Elemental_DB_Editor
 
         private void button_Addmod_Click(object sender, EventArgs e)
         {
-            string FName = textBox1.Text, FLink = textBox2.Text;
-            if (!Program.erForm.AllMods.Contains(FName)) { 
-            MySqlConnection conn = new MySqlConnection(Program.erForm.ERConnectionString);
-            string query = "INSERT INTO `ElementalRealms`.`Mods` (`FileName`, `URL`) VALUES ('" + FName + "', '" + FLink + "');";
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            cmd.Connection.Open();
-            cmd.ExecuteNonQuery();
-            conn.CloseAsync();
-            MessageBox.Show("Added Mod", "ERealms Feedback",
-                                 MessageBoxButtons.OK, MessageBoxIcon.None);
-            Program.erForm.RefreshLV();
-        }else
-                MessageBox.Show("The mod you are trying to add exists", "ERealms Feedback",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            if (Program.erForm.isRaw)
+            {
+                Program.erForm.AllMods.Add(textBox1.Text+"@"+textBox2.Text);
+                Program.erForm.RefreshLRaw();
+            }
+            else
+            {
+                string FName = textBox1.Text, FLink = textBox2.Text;
+                if (!Program.erForm.AllMods.Contains(FName))
+                {
+                    MySqlConnection conn = new MySqlConnection(Program.erForm.ERConnectionString);
+                    string query = "INSERT INTO `ElementalRealms`.`Mods` (`FileName`, `URL`) VALUES ('" + FName + "', '" + FLink + "');";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.CloseAsync();
+                    MessageBox.Show("Added Mod", "ERealms Feedback",
+                                         MessageBoxButtons.OK, MessageBoxIcon.None);
+                    Program.erForm.RefreshLV();
+                }
+                else
+                    MessageBox.Show("The mod you are trying to add exists", "ERealms Feedback",
+                                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             textBox1.Clear();
             textBox2.Clear();
         }

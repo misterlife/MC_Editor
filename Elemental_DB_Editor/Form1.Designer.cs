@@ -36,15 +36,18 @@
             this.listBox_Mods = new System.Windows.Forms.ListBox();
             this.button_addmod = new System.Windows.Forms.Button();
             this.button_CVersion = new System.Windows.Forms.Button();
+            this.button_StartRaw = new System.Windows.Forms.Button();
+            this.button_Import = new System.Windows.Forms.Button();
+            this.button_Export = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Login
             // 
             this.button_Login.Location = new System.Drawing.Point(12, 12);
             this.button_Login.Name = "button_Login";
-            this.button_Login.Size = new System.Drawing.Size(130, 25);
+            this.button_Login.Size = new System.Drawing.Size(65, 25);
             this.button_Login.TabIndex = 1;
-            this.button_Login.Text = "Login";
+            this.button_Login.Text = "MySQL";
             this.button_Login.UseVisualStyleBackColor = true;
             this.button_Login.Click += new System.EventHandler(this.button_Login_Click);
             // 
@@ -115,11 +118,46 @@
             this.button_CVersion.UseVisualStyleBackColor = true;
             this.button_CVersion.Click += new System.EventHandler(this.button_CVersion_Click);
             // 
+            // button_StartRaw
+            // 
+            this.button_StartRaw.Location = new System.Drawing.Point(77, 12);
+            this.button_StartRaw.Name = "button_StartRaw";
+            this.button_StartRaw.Size = new System.Drawing.Size(65, 25);
+            this.button_StartRaw.TabIndex = 9;
+            this.button_StartRaw.Text = "Raw";
+            this.button_StartRaw.UseVisualStyleBackColor = true;
+            this.button_StartRaw.Click += new System.EventHandler(this.button_StartRaw_Click);
+            // 
+            // button_Import
+            // 
+            this.button_Import.Location = new System.Drawing.Point(87, 12);
+            this.button_Import.Name = "button_Import";
+            this.button_Import.Size = new System.Drawing.Size(55, 25);
+            this.button_Import.TabIndex = 10;
+            this.button_Import.Text = "Import";
+            this.button_Import.UseVisualStyleBackColor = true;
+            this.button_Import.Visible = false;
+            this.button_Import.Click += new System.EventHandler(this.button_Import_Click);
+            // 
+            // button_Export
+            // 
+            this.button_Export.Location = new System.Drawing.Point(35, 12);
+            this.button_Export.Name = "button_Export";
+            this.button_Export.Size = new System.Drawing.Size(55, 25);
+            this.button_Export.TabIndex = 11;
+            this.button_Export.Text = "Export";
+            this.button_Export.UseVisualStyleBackColor = true;
+            this.button_Export.Visible = false;
+            this.button_Export.Click += new System.EventHandler(this.button_Export_Click);
+            // 
             // ER_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.button_Export);
+            this.Controls.Add(this.button_Import);
+            this.Controls.Add(this.button_StartRaw);
             this.Controls.Add(this.button_CVersion);
             this.Controls.Add(this.button_addmod);
             this.Controls.Add(this.listBox_Mods);
@@ -146,6 +184,9 @@
         private System.Windows.Forms.ListBox listBox_Mods;
         private System.Windows.Forms.Button button_addmod;
         private System.Windows.Forms.Button button_CVersion;
+        private System.Windows.Forms.Button button_StartRaw;
+        private System.Windows.Forms.Button button_Import;
+        private System.Windows.Forms.Button button_Export;
     }
 }
 

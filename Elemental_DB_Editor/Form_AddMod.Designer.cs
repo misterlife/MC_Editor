@@ -95,7 +95,6 @@
             this.Name = "Form_AddMod";
             this.Text = "Add Mods";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_AddMod_FormClosing);
-            this.Load += new System.EventHandler(this.Form_AddMod_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

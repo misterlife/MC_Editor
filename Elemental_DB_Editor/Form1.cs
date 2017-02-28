@@ -13,6 +13,7 @@ namespace Elemental_DB_Editor
 {
     public partial class ER_Form : Form
     {
+        public bool isRaw = false;
         public string ERConnectionString, ERserver= "51.255.41.80";
         public string[] SList_Mods;
         public List<string> AllMods = new List<string>();
@@ -27,25 +28,37 @@ namespace Elemental_DB_Editor
         {
 
         }
-
+        private void button_StartRaw_Click(object sender, EventArgs e)
+        {
+            isRaw = true;
+            button_StartRaw.Visible = false;
+            button_Login.Visible = false;
+            button_Export.Visible = true;
+            button_Import.Visible = true;
+            button_addmod.Visible = true;
+            comboBox_Versions.Enabled = true;
+            button_CVersion.Enabled = true;
+        }
         private void button_Login_Click(object sender, EventArgs e)
         {
             button_Login.Enabled = false;
-           string[] login= (Microsoft.VisualBasic.Interaction.InputBox("Username,Password:", "ERealms Connection", "Username,password")).Split(",".ToCharArray());
+           string[] login= (Microsoft.VisualBasic.Interaction.InputBox("Username,Password:", "ERealms Connection", "Username,password")).Split(',');
             if (login.Length!=2)
             {
                 MessageBox.Show("You must use the syntax :\"Username,Password\"", "ERealms user error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Environment.Exit(1);
+                Close();
+                return;
             }
 
             ERConnectionString = "server=" + ERserver + ";uid=" + login[0] + ";" +
-                                    "pwd=" + login[1] + ";database=ElementalRealms;";
+                                    "pwd=" + login[1] + ";";
 
             RefreshSV();
 
+            button_StartRaw.Visible = false;
             comboBox_Versions.Enabled = true;
-            button_Login.Enabled = true;
+            button_Login.Visible = false;
             button_addmod.Visible = true;
             button_CVersion.Enabled = true;
         }
@@ -73,32 +86,86 @@ namespace Elemental_DB_Editor
         {
             if (listBox_Version.SelectedItem != null)
             {
-                string selected = listBox_Version.SelectedItem.ToString();
-                listBox_Mods.Items.Add(selected);
-                listBox_Version.Items.Remove(selected);
+                if (isRaw)
+                {
+                    comboBox_Versions.Enabled = false;
+                    for (int i = 0; i < AllVersions.Count; i++)
+                    {
+                        string[] curVer = AllVersions[i].Split('@');
+                        if (curVer[0] == comboBox_Versions.Text)
+                        {
+                            List<string> tmp518 = curVer[8].Split('|').ToList();
+                            tmp518.Remove(listBox_Version.SelectedItem.ToString());
+                            curVer[8] = string.Join("|", tmp518);
+                            AllVersions[i] = string.Join("@", curVer);
+                            break;
+                        }
+                    }
+                    RefreshLRaw();
+                    comboBox_Versions.Enabled = true;
+                }
+                    else
+                    {
+                        string selected = listBox_Version.SelectedItem.ToString();
+                        listBox_Mods.Items.Add(selected);
+                        listBox_Version.Items.Remove(selected);
+                    }
+            }
+        }
+        private void listBox_Mods_DoubleClick(object sender, EventArgs e)
+        {
+            if (listBox_Mods.SelectedItem != null)
+            {
+                if (isRaw)
+                {
+                    comboBox_Versions.Enabled = false;
+                    for (int i = 0; i < AllVersions.Count; i++)
+                    {
+                        string[] curVer = AllVersions[i].Split('@');
+                        if (curVer[0] == comboBox_Versions.Text)
+                        {
+                            List<string> tmp519 = curVer[8].Split('|').ToList();
+                            for (int i2=0;i2<AllMods.Count;i2++)
+                            {
+                                string tmp120 = listBox_Mods.SelectedItem.ToString();
+                                if (AllMods[i2] == tmp120)
+                                {
+                                    tmp519.Add(tmp120.Split('@')[0]);
+                                    break;
+                                }
+                            }
+                            curVer[8] = string.Join("|", tmp519);
+                            AllVersions[i] = string.Join("@", curVer);
+                            break;
+                        }
+                    }
+                    RefreshLRaw();
+                    comboBox_Versions.Enabled = true;
+                }
+                    else
+                    {
+                        string selected = listBox_Mods.SelectedItem.ToString();
+                        listBox_Version.Items.Add(selected);
+                        listBox_Mods.Items.Remove(selected);
+                    }
             }
         }
 
         private void comboBox_Versions_SelectedValueChanged(object sender, EventArgs e)
         {
+            if(comboBox_Versions.Text !=null)
+            if (isRaw)
+            RefreshLRaw();
+            else
             RefreshLV();
         }
 
         private void button_addmod_Click(object sender, EventArgs e)
         {
-            new Form_AddMod().Show();
-            button_addmod.Visible = false;
+                new Form_AddMod().Show();
+                button_addmod.Visible = false;
         }
 
-        private void listBox_Mods_DoubleClick(object sender, EventArgs e)
-        {
-            if (listBox_Mods.SelectedItem != null)
-            {
-                string selected = listBox_Mods.SelectedItem.ToString();
-                listBox_Version.Items.Add(selected);
-                listBox_Mods.Items.Remove(selected);
-            }
-        }
         public void ABOn(){
             button_addmod.Visible = true;
         }
@@ -109,8 +176,8 @@ namespace Elemental_DB_Editor
 
         private void button_CVersion_Click(object sender, EventArgs e)
         {
-            new Form_CVersion().Show();
-            button_CVersion.Enabled = false;
+                new Form_CVersion().Show();
+                button_CVersion.Enabled = false;
         }
         public string SelectedVersion()
         {
@@ -130,7 +197,8 @@ namespace Elemental_DB_Editor
                 Console.Write(ex.Message);
                 MessageBox.Show(ex.Message, "ERealms user error",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Environment.Exit(1);
+                Close();
+                return;
             }
             comboBox_Versions.Items.Clear();
             MySqlDataReader dataReader = cmd.ExecuteReader();
@@ -157,6 +225,58 @@ namespace Elemental_DB_Editor
             listBox_Version.Size = tmp412;
         }
 
+
+        private void button_Import_Click(object sender, EventArgs e)
+        {
+            string[] Import = (Microsoft.VisualBasic.Interaction.InputBox("[Versions][Mods]:", "ERealms Raw Import", "[Versions][Mods]")).Split('[',']').Where(c => c != null).ToArray();
+            if (Import.Length != 5)
+            {
+                MessageBox.Show("You must use the syntax :\"[Version...][Mod...]\"", "ERealms user error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+                return;
+            }
+            AllMods = Import[3].Split(',').ToList();
+            AllVersions = Import[1].Split(',').ToList();
+            RefreshVRaw();
+        }
+
+        private void button_Export_Click(object sender, EventArgs e)
+        {
+            System.IO.File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Raw data.txt", "["+string.Join(",", AllVersions) +"]"+"[" + string.Join(",", AllMods) + "]");
+        }
+
+        public void RefreshVRaw()
+        {
+            for(int i = 0; i < AllVersions.Count; i++)
+            {
+                comboBox_Versions.Items.Add(AllVersions[i].Split('@')[0]);
+            }
+        }
+        public void RefreshLRaw()
+        {
+            listBox_Version.Items.Clear();
+            listBox_Mods.Items.Clear();
+            listBox_Mods.Enabled = false;
+            listBox_Version.Enabled = false;
+            for (int i=0; i< AllVersions.Count; i++)
+            {
+                string[] curVer = AllVersions[i].Split('@');
+                if (curVer[0] == comboBox_Versions.Text)
+                {
+                    listBox_Version.Items.AddRange(curVer[8].Split('|'));
+                    break;
+                }
+            }
+            for(int i = 0; i < AllMods.Count; i++)
+            {
+                if (!listBox_Version.Items.Contains(AllMods[i].Split('@')[0]))
+                    listBox_Mods.Items.Add(AllMods[i]);
+            }
+            listBox_Mods.Enabled = true;
+            listBox_Version.Enabled = true;
+        }
+
         public void RefreshLV()
         {
             button_Login.Visible = false;
@@ -175,7 +295,8 @@ namespace Elemental_DB_Editor
                 Console.Write(ex.Message);
                 MessageBox.Show(ex.Message, "ERealms user error",
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Environment.Exit(1);
+                Close();
+                return;
             }
             listBox_Mods.Items.Clear();
             listBox_Version.Items.Clear();
