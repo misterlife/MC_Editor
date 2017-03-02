@@ -78,7 +78,7 @@
             // 
             this.listBox_Version.Enabled = false;
             this.listBox_Version.FormattingEnabled = true;
-            this.listBox_Version.Location = new System.Drawing.Point(204, 31);
+            this.listBox_Version.Location = new System.Drawing.Point(204, 32);
             this.listBox_Version.Name = "listBox_Version";
             this.listBox_Version.Size = new System.Drawing.Size(180, 290);
             this.listBox_Version.Sorted = true;
