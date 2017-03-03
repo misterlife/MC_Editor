@@ -93,7 +93,7 @@ namespace Elemental_DB_Editor
 
                         try
                         {
-                            conn.OpenAsync();
+                            conn.Open();
                         }
                         catch (MySqlException ex)
                         {
@@ -114,7 +114,7 @@ namespace Elemental_DB_Editor
                             checkBox_Visable.Checked = Convert.ToBoolean(int.Parse(dataReader["Visable"].ToString()));
                         }
                         dataReader.Close();
-                        conn.CloseAsync();
+                        conn.Close();
                     }
                     else
                     {
@@ -171,8 +171,8 @@ namespace Elemental_DB_Editor
                                              MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
                     Program.erForm.RefreshSV();
+                    Close();
                 }
-                Close();
             }
         }
         
