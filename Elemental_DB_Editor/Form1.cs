@@ -51,7 +51,7 @@ namespace Elemental_DB_Editor
                 return;
             }
 
-            ERConnectionString = "server=" + login[3] + ";uid=" + login[0] + ";" +
+            ERConnectionString = "server=" + login[2] + ";uid=" + login[0] + ";" +
                                     "pwd=" + login[1] + ";";
 
             RefreshSV();
