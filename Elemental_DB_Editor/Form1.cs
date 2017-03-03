@@ -14,7 +14,7 @@ namespace Elemental_DB_Editor
     public partial class ER_Form : Form
     {
         public bool isRaw = false;
-        public string ERConnectionString, ERserver= "51.255.41.80";
+        public string ERConnectionString;
         public string[] SList_Mods;
         public List<string> AllMods = new List<string>();
         public List<string> AllVersions = new List<string>();
@@ -42,16 +42,16 @@ namespace Elemental_DB_Editor
         private void button_Login_Click(object sender, EventArgs e)
         {
             button_Login.Enabled = false;
-           string[] login= (Microsoft.VisualBasic.Interaction.InputBox("Username,Password:", "ERealms Connection", "Username,password")).Split(',');
-            if (login.Length!=2)
+           string[] login= (Microsoft.VisualBasic.Interaction.InputBox("Username,Password,IP:", "ERealms Connection", "Username,password,IP")).Split(',');
+            if (login.Length!=3)
             {
-                MessageBox.Show("You must use the syntax :\"Username,Password\"", "ERealms user error",
+                MessageBox.Show("You must use the syntax :\"Username,Password,IP\"", "ERealms user error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
                 return;
             }
 
-            ERConnectionString = "server=" + ERserver + ";uid=" + login[0] + ";" +
+            ERConnectionString = "server=" + login[3] + ";uid=" + login[0] + ";" +
                                     "pwd=" + login[1] + ";";
 
             RefreshSV();
