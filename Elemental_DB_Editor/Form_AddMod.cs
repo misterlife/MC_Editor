@@ -37,7 +37,7 @@ namespace Elemental_DB_Editor
                 if (!Program.erForm.AllMods.Contains(FName))
                 {
                     MySqlConnection conn = new MySqlConnection(Program.erForm.ERConnectionString);
-                    string query = "INSERT INTO `ElementalRealms`.`Mods` (`FileName`, `URL`) VALUES ('" + FName + "', '" + FLink + "');";
+                    string query = "INSERT INTO `" + Program.erForm.PackName + "`.`Mods` (`FileName`, `URL`) VALUES ('" + FName + "', '" + FLink + "');";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Connection.Open();
                     cmd.ExecuteNonQuery();
