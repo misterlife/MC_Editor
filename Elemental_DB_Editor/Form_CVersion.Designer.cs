@@ -47,6 +47,8 @@
             this.button_Switch = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBox_InheritMod = new System.Windows.Forms.ComboBox();
+            this.textBox_Server = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox_config
@@ -200,7 +202,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(25, 178);
+            this.label8.Location = new System.Drawing.Point(22, 201);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 13);
             this.label8.TabIndex = 16;
@@ -212,16 +214,36 @@
             this.comboBox_InheritMod.FormattingEnabled = true;
             this.comboBox_InheritMod.Items.AddRange(new object[] {
             "none"});
-            this.comboBox_InheritMod.Location = new System.Drawing.Point(140, 175);
+            this.comboBox_InheritMod.Location = new System.Drawing.Point(137, 198);
             this.comboBox_InheritMod.Name = "comboBox_InheritMod";
             this.comboBox_InheritMod.Size = new System.Drawing.Size(100, 21);
             this.comboBox_InheritMod.TabIndex = 17;
+            // 
+            // textBox_Server
+            // 
+            this.textBox_Server.Enabled = false;
+            this.textBox_Server.Location = new System.Drawing.Point(140, 169);
+            this.textBox_Server.Name = "textBox_Server";
+            this.textBox_Server.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Server.TabIndex = 18;
+            this.textBox_Server.Text = "null";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(22, 172);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(60, 13);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Server link:";
             // 
             // Form_CVersion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(258, 171);
+            this.ClientSize = new System.Drawing.Size(258, 193);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.textBox_Server);
             this.Controls.Add(this.comboBox_InheritMod);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button_Switch);
@@ -241,8 +263,8 @@
             this.Controls.Add(this.textBox_biome);
             this.Controls.Add(this.textBox_config);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(274, 242);
-            this.MinimumSize = new System.Drawing.Size(274, 210);
+            this.MaximumSize = new System.Drawing.Size(274, 262);
+            this.MinimumSize = new System.Drawing.Size(274, 232);
             this.Name = "Form_CVersion";
             this.Text = "Edit Versions";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_CVersion_FormClosing);
@@ -272,5 +294,7 @@
         private System.Windows.Forms.Button button_Switch;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBox_InheritMod;
+        private System.Windows.Forms.TextBox textBox_Server;
+        private System.Windows.Forms.Label label9;
     }
 }
