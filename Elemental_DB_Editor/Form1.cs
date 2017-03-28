@@ -219,7 +219,7 @@ namespace Elemental_DB_Editor
 
         private void ER_Form_SizeChanged(object sender, EventArgs e)
         {
-            Size tmp412 = new Size((this.Width / 2) - 20, this.Height - 82);
+            Size tmp412 = new Size((this.Width / 2) - 20, this.Height - 144);
             listBox_Mods.Size = tmp412;
             listBox_Version.Location = new Point((this.Width / 2), listBox_Version.Location.Y);
             listBox_Version.Size = tmp412;
