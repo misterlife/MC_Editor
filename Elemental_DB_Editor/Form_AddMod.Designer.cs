@@ -70,6 +70,7 @@
             // 
             // button_Addmod
             // 
+            this.button_Addmod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Addmod.Location = new System.Drawing.Point(16, 95);
             this.button_Addmod.Name = "button_Addmod";
             this.button_Addmod.Size = new System.Drawing.Size(255, 23);
