@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace Elemental_DB_Editor
 {
     public partial class ER_Form : Form
     {
+        public string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\.minecraft\\ElementalRealms";
         public bool isRaw = false;
         public string ERConnectionString, PackName="ElementalRealms";
         public string[] SList_Mods;
@@ -20,6 +22,10 @@ namespace Elemental_DB_Editor
         public List<string> AllVersions = new List<string>();
         public ER_Form()
         {
+            if (Environment.GetEnvironmentVariable("ERealms", EnvironmentVariableTarget.User) != null)
+            {
+                Path = Environment.GetEnvironmentVariable("ERealms", EnvironmentVariableTarget.User);
+            }
             InitializeComponent();
         }
 
@@ -42,7 +48,11 @@ namespace Elemental_DB_Editor
         private void button_Login_Click(object sender, EventArgs e)
         {
             button_Login.Enabled = false;
-           string[] login= (Microsoft.VisualBasic.Interaction.InputBox("DB Name,Username,Password,IP:", "ERealms Connection", "DB_Name,Username,password,IP")).Split(',');
+            string[] login;
+            if (File.Exists(Path + "\\ConString.key"))
+                login=File.ReadAllLines(Path + "\\ConString.key")[0].Split(',');
+            else
+                login = (Microsoft.VisualBasic.Interaction.InputBox("DB Name,Username,Password,IP:", "ERealms Connection", "DB_Name,Username,password,IP")).Split(',');
             if (login.Length!=4)
             {
                 MessageBox.Show("You must use the syntax :\"DB_Name,Username,Password,IP\"", "ERealms user error",
