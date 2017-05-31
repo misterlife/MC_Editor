@@ -40,12 +40,25 @@
             this.button_Import = new System.Windows.Forms.Button();
             this.button_Export = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button_Close = new System.Windows.Forms.Button();
             this.button_ToTray = new System.Windows.Forms.Button();
-            this.temp_name = new System.Windows.Forms.Label();
             this.pictureBox_ERlogo = new System.Windows.Forms.PictureBox();
+            this.temp_name = new System.Windows.Forms.Label();
+            this.button_Close = new System.Windows.Forms.Button();
+            this.panel_Mods = new System.Windows.Forms.Panel();
+            this.button_Mods = new System.Windows.Forms.Button();
+            this.panel_SideButt = new System.Windows.Forms.Panel();
+            this.button_ServerMods = new System.Windows.Forms.Button();
+            this.button_ClientMods = new System.Windows.Forms.Button();
+            this.panel_ClientMods = new System.Windows.Forms.Panel();
+            this.panel_ServerMods = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ERlogo)).BeginInit();
+            this.panel_Mods.SuspendLayout();
+            this.panel_SideButt.SuspendLayout();
+            this.panel_ClientMods.SuspendLayout();
+            this.panel_ServerMods.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_Login
@@ -93,7 +106,7 @@
             this.listBox_Version.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.listBox_Version.FormattingEnabled = true;
             this.listBox_Version.ItemHeight = 18;
-            this.listBox_Version.Location = new System.Drawing.Point(210, 96);
+            this.listBox_Version.Location = new System.Drawing.Point(212, 17);
             this.listBox_Version.Name = "listBox_Version";
             this.listBox_Version.Size = new System.Drawing.Size(180, 274);
             this.listBox_Version.Sorted = true;
@@ -106,7 +119,7 @@
             this.listBox_Mods.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.listBox_Mods.FormattingEnabled = true;
             this.listBox_Mods.ItemHeight = 18;
-            this.listBox_Mods.Location = new System.Drawing.Point(13, 96);
+            this.listBox_Mods.Location = new System.Drawing.Point(12, 17);
             this.listBox_Mods.Name = "listBox_Mods";
             this.listBox_Mods.Size = new System.Drawing.Size(180, 274);
             this.listBox_Mods.Sorted = true;
@@ -201,6 +214,45 @@
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             this.panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
             // 
+            // button_ToTray
+            // 
+            this.button_ToTray.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_ToTray.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.button_ToTray.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_ToTray.BackgroundImage")));
+            this.button_ToTray.FlatAppearance.BorderSize = 0;
+            this.button_ToTray.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_ToTray.Location = new System.Drawing.Point(980, 15);
+            this.button_ToTray.Name = "button_ToTray";
+            this.button_ToTray.Size = new System.Drawing.Size(50, 50);
+            this.button_ToTray.TabIndex = 27;
+            this.button_ToTray.TabStop = false;
+            this.button_ToTray.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox_ERlogo
+            // 
+            this.pictureBox_ERlogo.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_ERlogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_ERlogo.Image")));
+            this.pictureBox_ERlogo.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox_ERlogo.MaximumSize = new System.Drawing.Size(64, 64);
+            this.pictureBox_ERlogo.MinimumSize = new System.Drawing.Size(64, 64);
+            this.pictureBox_ERlogo.Name = "pictureBox_ERlogo";
+            this.pictureBox_ERlogo.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox_ERlogo.TabIndex = 26;
+            this.pictureBox_ERlogo.TabStop = false;
+            // 
+            // temp_name
+            // 
+            this.temp_name.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.temp_name.AutoSize = true;
+            this.temp_name.BackColor = System.Drawing.Color.Transparent;
+            this.temp_name.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.temp_name.ForeColor = System.Drawing.Color.SeaShell;
+            this.temp_name.Location = new System.Drawing.Point(80, 25);
+            this.temp_name.Name = "temp_name";
+            this.temp_name.Size = new System.Drawing.Size(179, 25);
+            this.temp_name.TabIndex = 15;
+            this.temp_name.Text = "Elemental launcher ";
+            // 
             // button_Close
             // 
             this.button_Close.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -216,44 +268,100 @@
             this.button_Close.UseVisualStyleBackColor = false;
             this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
             // 
-            // button_ToTray
+            // panel_Mods
             // 
-            this.button_ToTray.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button_ToTray.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.button_ToTray.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_ToTray.BackgroundImage")));
-            this.button_ToTray.FlatAppearance.BorderSize = 0;
-            this.button_ToTray.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_ToTray.Location = new System.Drawing.Point(980, 15);
-            this.button_ToTray.Name = "button_ToTray";
-            this.button_ToTray.Size = new System.Drawing.Size(50, 50);
-            this.button_ToTray.TabIndex = 27;
-            this.button_ToTray.TabStop = false;
-            this.button_ToTray.UseVisualStyleBackColor = false;
+            this.panel_Mods.Controls.Add(this.listBox_Mods);
+            this.panel_Mods.Controls.Add(this.listBox_Version);
+            this.panel_Mods.Location = new System.Drawing.Point(0, 79);
+            this.panel_Mods.Name = "panel_Mods";
+            this.panel_Mods.Size = new System.Drawing.Size(1014, 523);
+            this.panel_Mods.TabIndex = 21;
+            this.panel_Mods.Visible = false;
             // 
-            // temp_name
+            // button_Mods
             // 
-            this.temp_name.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.temp_name.AutoSize = true;
-            this.temp_name.BackColor = System.Drawing.Color.Transparent;
-            this.temp_name.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.temp_name.ForeColor = System.Drawing.Color.SeaShell;
-            this.temp_name.Location = new System.Drawing.Point(80, 25);
-            this.temp_name.Name = "temp_name";
-            this.temp_name.Size = new System.Drawing.Size(179, 25);
-            this.temp_name.TabIndex = 15;
-            this.temp_name.Text = "Elemental launcher ";
+            this.button_Mods.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_Mods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Mods.Location = new System.Drawing.Point(19, 15);
+            this.button_Mods.Name = "button_Mods";
+            this.button_Mods.Size = new System.Drawing.Size(50, 50);
+            this.button_Mods.TabIndex = 22;
+            this.button_Mods.Text = "Mods";
+            this.button_Mods.UseVisualStyleBackColor = true;
+            this.button_Mods.Click += new System.EventHandler(this.button_Mods_Click);
             // 
-            // pictureBox_ERlogo
+            // panel_SideButt
             // 
-            this.pictureBox_ERlogo.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_ERlogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_ERlogo.Image")));
-            this.pictureBox_ERlogo.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox_ERlogo.MaximumSize = new System.Drawing.Size(64, 64);
-            this.pictureBox_ERlogo.MinimumSize = new System.Drawing.Size(64, 64);
-            this.pictureBox_ERlogo.Name = "pictureBox_ERlogo";
-            this.pictureBox_ERlogo.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox_ERlogo.TabIndex = 26;
-            this.pictureBox_ERlogo.TabStop = false;
+            this.panel_SideButt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.panel_SideButt.Controls.Add(this.button_ServerMods);
+            this.panel_SideButt.Controls.Add(this.button_ClientMods);
+            this.panel_SideButt.Controls.Add(this.button_Mods);
+            this.panel_SideButt.Location = new System.Drawing.Point(1016, 79);
+            this.panel_SideButt.Name = "panel_SideButt";
+            this.panel_SideButt.Size = new System.Drawing.Size(84, 523);
+            this.panel_SideButt.TabIndex = 23;
+            // 
+            // button_ServerMods
+            // 
+            this.button_ServerMods.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_ServerMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_ServerMods.Location = new System.Drawing.Point(19, 135);
+            this.button_ServerMods.Name = "button_ServerMods";
+            this.button_ServerMods.Size = new System.Drawing.Size(50, 50);
+            this.button_ServerMods.TabIndex = 24;
+            this.button_ServerMods.Text = "Server Mods";
+            this.button_ServerMods.UseVisualStyleBackColor = true;
+            this.button_ServerMods.Click += new System.EventHandler(this.button_ServerMods_Click);
+            // 
+            // button_ClientMods
+            // 
+            this.button_ClientMods.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_ClientMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_ClientMods.Location = new System.Drawing.Point(19, 75);
+            this.button_ClientMods.Name = "button_ClientMods";
+            this.button_ClientMods.Size = new System.Drawing.Size(50, 50);
+            this.button_ClientMods.TabIndex = 23;
+            this.button_ClientMods.Text = "Client Mods";
+            this.button_ClientMods.UseVisualStyleBackColor = true;
+            this.button_ClientMods.Click += new System.EventHandler(this.button_ClientMods_Click);
+            // 
+            // panel_ClientMods
+            // 
+            this.panel_ClientMods.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel_ClientMods.Controls.Add(this.label1);
+            this.panel_ClientMods.Location = new System.Drawing.Point(20, 79);
+            this.panel_ClientMods.Name = "panel_ClientMods";
+            this.panel_ClientMods.Size = new System.Drawing.Size(1014, 523);
+            this.panel_ClientMods.TabIndex = 7;
+            this.panel_ClientMods.Visible = false;
+            // 
+            // panel_ServerMods
+            // 
+            this.panel_ServerMods.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel_ServerMods.Controls.Add(this.label2);
+            this.panel_ServerMods.Location = new System.Drawing.Point(40, 79);
+            this.panel_ServerMods.Name = "panel_ServerMods";
+            this.panel_ServerMods.Size = new System.Drawing.Size(1010, 523);
+            this.panel_ServerMods.TabIndex = 8;
+            this.panel_ServerMods.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(70, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Client stuff";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(51, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Server stuff";
             // 
             // ER_Form
             // 
@@ -261,9 +369,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1100, 600);
+            this.Controls.Add(this.panel_SideButt);
+            this.Controls.Add(this.panel_ServerMods);
+            this.Controls.Add(this.panel_ClientMods);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.listBox_Mods);
-            this.Controls.Add(this.listBox_Version);
+            this.Controls.Add(this.panel_Mods);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1100, 600);
@@ -276,6 +386,12 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ERlogo)).EndInit();
+            this.panel_Mods.ResumeLayout(false);
+            this.panel_SideButt.ResumeLayout(false);
+            this.panel_ClientMods.ResumeLayout(false);
+            this.panel_ClientMods.PerformLayout();
+            this.panel_ServerMods.ResumeLayout(false);
+            this.panel_ServerMods.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -296,6 +412,15 @@
         private System.Windows.Forms.Button button_ToTray;
         private System.Windows.Forms.PictureBox pictureBox_ERlogo;
         private System.Windows.Forms.Label temp_name;
+        private System.Windows.Forms.Panel panel_Mods;
+        private System.Windows.Forms.Button button_Mods;
+        private System.Windows.Forms.Panel panel_SideButt;
+        private System.Windows.Forms.Button button_ServerMods;
+        private System.Windows.Forms.Button button_ClientMods;
+        private System.Windows.Forms.Panel panel_ServerMods;
+        private System.Windows.Forms.Panel panel_ClientMods;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

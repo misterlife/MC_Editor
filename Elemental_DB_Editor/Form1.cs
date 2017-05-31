@@ -230,9 +230,9 @@ namespace Elemental_DB_Editor
         private void ER_Form_SizeChanged(object sender, EventArgs e)
         {
             int SizeApart = 4;
-            Size tmp412 = new Size((this.Width / 2) - (20+SizeApart), this.Height - 104);
+            Size tmp412 = new Size((panel_Mods.Width / 2) - (20+SizeApart), panel_Mods.Height-20);
             listBox_Mods.Size = tmp412;
-            listBox_Version.Location = new Point((this.Width / 2)+SizeApart, listBox_Version.Location.Y);
+            listBox_Version.Location = new Point((panel_Mods.Width / 2)+SizeApart, listBox_Version.Location.Y);
             listBox_Version.Size = tmp412;
         }
 
@@ -317,6 +317,37 @@ namespace Elemental_DB_Editor
         private void button_Close_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button_Mods_Click(object sender, EventArgs e)
+        {
+            SwitchPannel(button_Mods);
+        }
+
+        private void button_ClientMods_Click(object sender, EventArgs e)
+        {
+            SwitchPannel(button_ClientMods);
+        }
+
+        private void button_ServerMods_Click(object sender, EventArgs e)
+        {
+            SwitchPannel(button_ServerMods);
+        }
+        private void SwitchPannel(Button ButtON)
+        {
+            List<Button> Butts = new List<Button> { button_Mods, button_ClientMods, button_ServerMods };
+            List<Panel> Pans = new List<Panel> { panel_Mods, panel_ClientMods, panel_ServerMods };
+            foreach (Panel ThisPan in Pans) ThisPan.Visible = false;
+            Pans[Butts.IndexOf(ButtON)].Visible=true;            
+            ButtON.Visible = false;
+            Butts.Remove(ButtON);
+            int Pos = 15;
+            foreach(Button ThisButt in Butts)
+            {
+                ThisButt.Visible = true;
+                ThisButt.Location = new Point(ThisButt.Location.X, Pos);
+                Pos += 60;
+            }
         }
 
         public void RefreshLV()
