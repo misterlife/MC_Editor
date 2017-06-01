@@ -53,6 +53,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel_ServerMods = new System.Windows.Forms.Panel();
             this.checkedList_ServerMods = new System.Windows.Forms.CheckedListBox();
+            this.checkedList_ClientMods = new System.Windows.Forms.CheckedListBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ERlogo)).BeginInit();
             this.panel_Mods.SuspendLayout();
@@ -272,6 +273,7 @@
             // 
             // panel_Mods
             // 
+            this.panel_Mods.BackColor = System.Drawing.Color.Transparent;
             this.panel_Mods.Controls.Add(this.listBox_Mods);
             this.panel_Mods.Controls.Add(this.listBox_Version);
             this.panel_Mods.Location = new System.Drawing.Point(0, 79);
@@ -329,11 +331,13 @@
             // 
             // panel_ClientMods
             // 
-            this.panel_ClientMods.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel_ClientMods.BackColor = System.Drawing.Color.Transparent;
+            this.panel_ClientMods.Controls.Add(this.checkedList_ClientMods);
             this.panel_ClientMods.Controls.Add(this.label1);
-            this.panel_ClientMods.Location = new System.Drawing.Point(20, 79);
+            this.panel_ClientMods.Location = new System.Drawing.Point(40, 100);
             this.panel_ClientMods.Name = "panel_ClientMods";
-            this.panel_ClientMods.Size = new System.Drawing.Size(1014, 523);
+            this.panel_ClientMods.Padding = new System.Windows.Forms.Padding(0, 0, 32, 0);
+            this.panel_ClientMods.Size = new System.Drawing.Size(974, 473);
             this.panel_ClientMods.TabIndex = 7;
             this.panel_ClientMods.Visible = false;
             // 
@@ -348,11 +352,12 @@
             // 
             // panel_ServerMods
             // 
-            this.panel_ServerMods.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel_ServerMods.BackColor = System.Drawing.Color.Transparent;
             this.panel_ServerMods.Controls.Add(this.checkedList_ServerMods);
             this.panel_ServerMods.Location = new System.Drawing.Point(40, 100);
             this.panel_ServerMods.Name = "panel_ServerMods";
-            this.panel_ServerMods.Size = new System.Drawing.Size(942, 473);
+            this.panel_ServerMods.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.panel_ServerMods.Size = new System.Drawing.Size(942, 493);
             this.panel_ServerMods.TabIndex = 8;
             this.panel_ServerMods.Visible = false;
             // 
@@ -367,6 +372,16 @@
             this.checkedList_ServerMods.Size = new System.Drawing.Size(942, 473);
             this.checkedList_ServerMods.Sorted = true;
             this.checkedList_ServerMods.TabIndex = 0;
+            // 
+            // checkedList_ClientMods
+            // 
+            this.checkedList_ClientMods.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedList_ClientMods.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedList_ClientMods.FormattingEnabled = true;
+            this.checkedList_ClientMods.Location = new System.Drawing.Point(0, 0);
+            this.checkedList_ClientMods.Name = "checkedList_ClientMods";
+            this.checkedList_ClientMods.Size = new System.Drawing.Size(942, 473);
+            this.checkedList_ClientMods.TabIndex = 1;
             // 
             // ER_Form
             // 
@@ -425,6 +440,7 @@
         private System.Windows.Forms.Panel panel_ClientMods;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckedListBox checkedList_ServerMods;
+        private System.Windows.Forms.CheckedListBox checkedList_ClientMods;
     }
 }
 

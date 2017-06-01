@@ -91,6 +91,10 @@ namespace Elemental_DB_Editor
             cmd = new MySqlCommand(query, conn);
             cmd.ExecuteNonQuery();
 
+            query = "UPDATE `" + PackName + "`.`Version` SET `Client`='" + string.Join(",", checkedList_ClientMods.CheckedItems.OfType<string>()) + "' WHERE `Version_UID`='" + comboBox_Versions.Text + "'";
+            cmd = new MySqlCommand(query, conn);
+            cmd.ExecuteNonQuery();
+
             cmd.Connection.Close();
             MessageBox.Show("Sucess", "ERealms Feedback",
                                  MessageBoxButtons.OK, MessageBoxIcon.None);
@@ -125,6 +129,39 @@ namespace Elemental_DB_Editor
             foreach(string ToSelectMods in SList_Mods)
             {
                 checkedList_ServerMods.SetItemChecked(checkedList_ServerMods.Items.IndexOf(ToSelectMods), true);
+            }
+
+            dataReader.Close();
+            button_submit.Enabled = true;
+            dataReader.Close();
+            conn.CloseAsync();
+        }
+        private void RefreshClientModsList()
+        {
+            button_submit.Enabled = false;
+            MySqlConnection conn = new MySqlConnection(ERConnectionString);
+            string query = "SELECT * FROM " + PackName + ".Version WHERE Version_UID='" + comboBox_Versions.Text + "'";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            try
+            { conn.OpenAsync(); }
+            catch (MySqlException ex)
+            {
+                Console.Write(ex.Message);
+                MessageBox.Show(ex.Message, "ERealms user error",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+                return;
+            }
+            checkedList_ClientMods.Items.Clear();
+            checkedList_ClientMods.Items.AddRange(AllMods.ToArray());
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+                SList_Mods = (dataReader["Client"].ToString()).Split(",".ToCharArray());
+            }
+            foreach (string ToSelectMods in SList_Mods)
+            {
+                checkedList_ClientMods.SetItemChecked(checkedList_ClientMods.Items.IndexOf(ToSelectMods), true);
             }
 
             dataReader.Close();
@@ -209,6 +246,7 @@ namespace Elemental_DB_Editor
                 else
                 {
                     RefreshLV();
+                    RefreshClientModsList();
                     RefreshServerModsList();
                 }
         }
