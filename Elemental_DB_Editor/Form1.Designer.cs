@@ -50,9 +50,9 @@
             this.button_ServerMods = new System.Windows.Forms.Button();
             this.button_ClientMods = new System.Windows.Forms.Button();
             this.panel_ClientMods = new System.Windows.Forms.Panel();
-            this.panel_ServerMods = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.panel_ServerMods = new System.Windows.Forms.Panel();
+            this.checkedList_ServerMods = new System.Windows.Forms.CheckedListBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ERlogo)).BeginInit();
             this.panel_Mods.SuspendLayout();
@@ -102,26 +102,28 @@
             // 
             // listBox_Version
             // 
+            this.listBox_Version.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBox_Version.Enabled = false;
             this.listBox_Version.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.listBox_Version.FormattingEnabled = true;
             this.listBox_Version.ItemHeight = 18;
             this.listBox_Version.Location = new System.Drawing.Point(212, 17);
             this.listBox_Version.Name = "listBox_Version";
-            this.listBox_Version.Size = new System.Drawing.Size(180, 274);
+            this.listBox_Version.Size = new System.Drawing.Size(180, 270);
             this.listBox_Version.Sorted = true;
             this.listBox_Version.TabIndex = 5;
             this.listBox_Version.DoubleClick += new System.EventHandler(this.listBox_Version_DoubleClick);
             // 
             // listBox_Mods
             // 
+            this.listBox_Mods.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBox_Mods.Enabled = false;
             this.listBox_Mods.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.listBox_Mods.FormattingEnabled = true;
             this.listBox_Mods.ItemHeight = 18;
             this.listBox_Mods.Location = new System.Drawing.Point(12, 17);
             this.listBox_Mods.Name = "listBox_Mods";
-            this.listBox_Mods.Size = new System.Drawing.Size(180, 274);
+            this.listBox_Mods.Size = new System.Drawing.Size(180, 270);
             this.listBox_Mods.Sorted = true;
             this.listBox_Mods.TabIndex = 6;
             this.listBox_Mods.DoubleClick += new System.EventHandler(this.listBox_Mods_DoubleClick);
@@ -335,16 +337,6 @@
             this.panel_ClientMods.TabIndex = 7;
             this.panel_ClientMods.Visible = false;
             // 
-            // panel_ServerMods
-            // 
-            this.panel_ServerMods.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel_ServerMods.Controls.Add(this.label2);
-            this.panel_ServerMods.Location = new System.Drawing.Point(40, 79);
-            this.panel_ServerMods.Name = "panel_ServerMods";
-            this.panel_ServerMods.Size = new System.Drawing.Size(1010, 523);
-            this.panel_ServerMods.TabIndex = 8;
-            this.panel_ServerMods.Visible = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -354,14 +346,27 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Client stuff";
             // 
-            // label2
+            // panel_ServerMods
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(51, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Server stuff";
+            this.panel_ServerMods.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel_ServerMods.Controls.Add(this.checkedList_ServerMods);
+            this.panel_ServerMods.Location = new System.Drawing.Point(40, 100);
+            this.panel_ServerMods.Name = "panel_ServerMods";
+            this.panel_ServerMods.Size = new System.Drawing.Size(942, 473);
+            this.panel_ServerMods.TabIndex = 8;
+            this.panel_ServerMods.Visible = false;
+            // 
+            // checkedList_ServerMods
+            // 
+            this.checkedList_ServerMods.BackColor = System.Drawing.SystemColors.Window;
+            this.checkedList_ServerMods.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedList_ServerMods.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedList_ServerMods.FormattingEnabled = true;
+            this.checkedList_ServerMods.Location = new System.Drawing.Point(0, 0);
+            this.checkedList_ServerMods.Name = "checkedList_ServerMods";
+            this.checkedList_ServerMods.Size = new System.Drawing.Size(942, 473);
+            this.checkedList_ServerMods.Sorted = true;
+            this.checkedList_ServerMods.TabIndex = 0;
             // 
             // ER_Form
             // 
@@ -391,7 +396,6 @@
             this.panel_ClientMods.ResumeLayout(false);
             this.panel_ClientMods.PerformLayout();
             this.panel_ServerMods.ResumeLayout(false);
-            this.panel_ServerMods.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -420,7 +424,7 @@
         private System.Windows.Forms.Panel panel_ServerMods;
         private System.Windows.Forms.Panel panel_ClientMods;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckedListBox checkedList_ServerMods;
     }
 }
 

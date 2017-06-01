@@ -44,6 +44,9 @@ namespace Elemental_DB_Editor
             button_addmod.Visible = true;
             comboBox_Versions.Enabled = true;
             button_CVersion.Enabled = true;
+            //Add raw support
+            button_ServerMods.Enabled = false;
+            button_ClientMods.Enabled = false;
         }
         private void button_Login_Click(object sender, EventArgs e)
         {
@@ -79,11 +82,16 @@ namespace Elemental_DB_Editor
             listBox_Mods.Enabled = false;
             listBox_Version.Enabled = false;
             MySqlConnection conn = new MySqlConnection(ERConnectionString);
-            string query = "UPDATE `"+PackName+"`.`Version` SET `Mods`='"+string.Join(",", listBox_Version.Items.Cast<String>().ToList()) + "' WHERE `Version_UID`='" + comboBox_Versions.Text + "'";
+            string query = "UPDATE `" + PackName + "`.`Version` SET `Mods`='" + string.Join(",", listBox_Version.Items.Cast<String>().ToList()) + "' WHERE `Version_UID`='" + comboBox_Versions.Text + "'";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             cmd.Connection.Open();
             cmd.ExecuteNonQuery();
-            conn.CloseAsync();
+            
+            query = "UPDATE `" + PackName + "`.`Version` SET `Server`='" + string.Join(",", checkedList_ServerMods.CheckedItems.OfType<string>()) + "' WHERE `Version_UID`='" + comboBox_Versions.Text + "'";
+            cmd = new MySqlCommand(query, conn);
+            cmd.ExecuteNonQuery();
+
+            cmd.Connection.Close();
             MessageBox.Show("Sucess", "ERealms Feedback",
                                  MessageBoxButtons.OK, MessageBoxIcon.None);
             RefreshSV();
@@ -91,7 +99,39 @@ namespace Elemental_DB_Editor
             listBox_Mods.Enabled = true;
             listBox_Version.Enabled = true;
         }
+        private void RefreshServerModsList()
+        {
+            button_submit.Enabled = false;
+            MySqlConnection conn = new MySqlConnection(ERConnectionString);
+            string query = "SELECT * FROM " + PackName + ".Version WHERE Version_UID='" + comboBox_Versions.Text + "'";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            try
+            {conn.OpenAsync();}
+            catch (MySqlException ex)
+            {
+                Console.Write(ex.Message);
+                MessageBox.Show(ex.Message, "ERealms user error",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+                return;
+            }
+            checkedList_ServerMods.Items.Clear();
+            checkedList_ServerMods.Items.AddRange(AllMods.ToArray());
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+                SList_Mods = (dataReader["Server"].ToString()).Split(",".ToCharArray());
+            }
+            foreach(string ToSelectMods in SList_Mods)
+            {
+                checkedList_ServerMods.SetItemChecked(checkedList_ServerMods.Items.IndexOf(ToSelectMods), true);
+            }
 
+            dataReader.Close();
+            button_submit.Enabled = true;
+            dataReader.Close();
+            conn.CloseAsync();
+        }
         private void listBox_Version_DoubleClick(object sender, EventArgs e)
         {
             if (listBox_Version.SelectedItem != null)
@@ -163,11 +203,14 @@ namespace Elemental_DB_Editor
 
         private void comboBox_Versions_SelectedValueChanged(object sender, EventArgs e)
         {
-            if(comboBox_Versions.Text !=null)
-            if (isRaw)
-            RefreshLRaw();
-            else
-            RefreshLV();
+            if (comboBox_Versions.Text != null)
+                if (isRaw)
+                    RefreshLRaw();
+                else
+                {
+                    RefreshLV();
+                    RefreshServerModsList();
+                }
         }
 
         private void button_addmod_Click(object sender, EventArgs e)
