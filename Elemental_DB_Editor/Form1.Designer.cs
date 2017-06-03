@@ -66,6 +66,7 @@
             // 
             // button_Login
             // 
+            this.button_Login.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button_Login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Login.Location = new System.Drawing.Point(508, 20);
@@ -78,6 +79,7 @@
             // 
             // button_submit
             // 
+            this.button_submit.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button_submit.Enabled = false;
             this.button_submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -92,7 +94,7 @@
             // 
             // comboBox_Versions
             // 
-            this.comboBox_Versions.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.comboBox_Versions.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.comboBox_Versions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Versions.Enabled = false;
             this.comboBox_Versions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -136,6 +138,7 @@
             // 
             // button_addmod
             // 
+            this.button_addmod.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button_addmod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_addmod.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_addmod.Location = new System.Drawing.Point(372, 23);
@@ -149,7 +152,7 @@
             // 
             // button_CVersion
             // 
-            this.button_CVersion.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button_CVersion.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.button_CVersion.Enabled = false;
             this.button_CVersion.FlatAppearance.BorderSize = 0;
             this.button_CVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -164,6 +167,7 @@
             // 
             // button_StartRaw
             // 
+            this.button_StartRaw.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button_StartRaw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_StartRaw.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_StartRaw.Location = new System.Drawing.Point(354, 20);
@@ -176,6 +180,7 @@
             // 
             // button_Import
             // 
+            this.button_Import.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button_Import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Import.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Import.Location = new System.Drawing.Point(413, 23);
@@ -189,6 +194,7 @@
             // 
             // button_Export
             // 
+            this.button_Export.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button_Export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Export.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Export.Location = new System.Drawing.Point(531, 23);
@@ -203,17 +209,17 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.panel2.Controls.Add(this.button_Close);
+            this.panel2.Controls.Add(this.button_CVersion);
+            this.panel2.Controls.Add(this.comboBox_Versions);
             this.panel2.Controls.Add(this.button_ToTray);
             this.panel2.Controls.Add(this.button_Export);
             this.panel2.Controls.Add(this.button_Import);
             this.panel2.Controls.Add(this.pictureBox_ERlogo);
             this.panel2.Controls.Add(this.temp_name);
-            this.panel2.Controls.Add(this.button_Close);
             this.panel2.Controls.Add(this.button_submit);
-            this.panel2.Controls.Add(this.button_CVersion);
             this.panel2.Controls.Add(this.button_addmod);
             this.panel2.Controls.Add(this.button_StartRaw);
-            this.panel2.Controls.Add(this.comboBox_Versions);
             this.panel2.Controls.Add(this.button_Login);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -306,7 +312,7 @@
             // 
             // button_Mods
             // 
-            this.button_Mods.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_Mods.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button_Mods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Mods.Location = new System.Drawing.Point(19, 15);
             this.button_Mods.Name = "button_Mods";
@@ -329,7 +335,7 @@
             // 
             // button_ServerMods
             // 
-            this.button_ServerMods.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_ServerMods.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button_ServerMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_ServerMods.Location = new System.Drawing.Point(19, 135);
             this.button_ServerMods.Name = "button_ServerMods";
@@ -341,7 +347,7 @@
             // 
             // button_ClientMods
             // 
-            this.button_ClientMods.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_ClientMods.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button_ClientMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_ClientMods.Location = new System.Drawing.Point(19, 75);
             this.button_ClientMods.Name = "button_ClientMods";
