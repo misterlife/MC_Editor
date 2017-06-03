@@ -30,10 +30,7 @@ namespace Elemental_DB_Editor
         }
 
 
-        private void ER_Form_Load(object sender, EventArgs e)
-        {
 
-        }
         private void button_StartRaw_Click(object sender, EventArgs e)
         {
             isRaw = true;
@@ -308,15 +305,6 @@ namespace Elemental_DB_Editor
             conn.Close();
         }
 
-        private void ER_Form_SizeChanged(object sender, EventArgs e)
-        {
-            int SizeApart = 4;
-            Size tmp412 = new Size((panel_Mods.Width / 2) - (20+SizeApart), panel_Mods.Height-20);
-            listBox_Mods.Size = tmp412;
-            listBox_Version.Location = new Point((panel_Mods.Width / 2)+SizeApart, listBox_Version.Location.Y);
-            listBox_Version.Size = tmp412;
-        }
-
 
         private void button_Import_Click(object sender, EventArgs e)
         {
@@ -430,6 +418,19 @@ namespace Elemental_DB_Editor
                 Pos += 60;
             }
         }
+
+        private void ER_Form_Resize(object sender, EventArgs e)
+        {
+            panel2.Size =new Size(this.Width,Convert.ToInt32(this.Height/7.5));
+            panel_SideButt.Size = new Size(Convert.ToInt32(this.Width/ 13.0952380952380952381), Convert.ToInt32(this.Height/ 1.14722753346080305927));
+            panel_SideButt.Location = new Point(Convert.ToInt32(this.Width / 1.08267716535433070866), Convert.ToInt32(this.Height / 7.59493670886075949367));
+            foreach (Panel PAN in new Panel[] { panel_Mods, panel_ServerMods, panel_ClientMods })
+            {
+                PAN.Size =new Size(Convert.ToInt32(this.Width/ 1.0848126232741617357),Convert.ToInt32(this.Height/ 1.14942528735632183908));
+                PAN.Location = new Point(0,Convert.ToInt32(this.Height/ 7.5));
+            }
+        }
+
 
         public void RefreshLV()
         {

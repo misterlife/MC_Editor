@@ -45,18 +45,20 @@
             this.temp_name = new System.Windows.Forms.Label();
             this.button_Close = new System.Windows.Forms.Button();
             this.panel_Mods = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel_mods = new System.Windows.Forms.TableLayoutPanel();
             this.button_Mods = new System.Windows.Forms.Button();
             this.panel_SideButt = new System.Windows.Forms.Panel();
             this.button_ServerMods = new System.Windows.Forms.Button();
             this.button_ClientMods = new System.Windows.Forms.Button();
             this.panel_ClientMods = new System.Windows.Forms.Panel();
+            this.checkedList_ClientMods = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel_ServerMods = new System.Windows.Forms.Panel();
             this.checkedList_ServerMods = new System.Windows.Forms.CheckedListBox();
-            this.checkedList_ClientMods = new System.Windows.Forms.CheckedListBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ERlogo)).BeginInit();
             this.panel_Mods.SuspendLayout();
+            this.tableLayoutPanel_mods.SuspendLayout();
             this.panel_SideButt.SuspendLayout();
             this.panel_ClientMods.SuspendLayout();
             this.panel_ServerMods.SuspendLayout();
@@ -90,6 +92,7 @@
             // 
             // comboBox_Versions
             // 
+            this.comboBox_Versions.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.comboBox_Versions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Versions.Enabled = false;
             this.comboBox_Versions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -104,13 +107,14 @@
             // listBox_Version
             // 
             this.listBox_Version.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox_Version.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox_Version.Enabled = false;
             this.listBox_Version.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.listBox_Version.FormattingEnabled = true;
             this.listBox_Version.ItemHeight = 18;
-            this.listBox_Version.Location = new System.Drawing.Point(212, 17);
+            this.listBox_Version.Location = new System.Drawing.Point(505, 3);
             this.listBox_Version.Name = "listBox_Version";
-            this.listBox_Version.Size = new System.Drawing.Size(180, 270);
+            this.listBox_Version.Size = new System.Drawing.Size(496, 501);
             this.listBox_Version.Sorted = true;
             this.listBox_Version.TabIndex = 5;
             this.listBox_Version.DoubleClick += new System.EventHandler(this.listBox_Version_DoubleClick);
@@ -118,13 +122,14 @@
             // listBox_Mods
             // 
             this.listBox_Mods.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox_Mods.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox_Mods.Enabled = false;
             this.listBox_Mods.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.listBox_Mods.FormattingEnabled = true;
             this.listBox_Mods.ItemHeight = 18;
-            this.listBox_Mods.Location = new System.Drawing.Point(12, 17);
+            this.listBox_Mods.Location = new System.Drawing.Point(3, 3);
             this.listBox_Mods.Name = "listBox_Mods";
-            this.listBox_Mods.Size = new System.Drawing.Size(180, 270);
+            this.listBox_Mods.Size = new System.Drawing.Size(496, 501);
             this.listBox_Mods.Sorted = true;
             this.listBox_Mods.TabIndex = 6;
             this.listBox_Mods.DoubleClick += new System.EventHandler(this.listBox_Mods_DoubleClick);
@@ -144,6 +149,7 @@
             // 
             // button_CVersion
             // 
+            this.button_CVersion.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button_CVersion.Enabled = false;
             this.button_CVersion.FlatAppearance.BorderSize = 0;
             this.button_CVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -219,7 +225,7 @@
             // 
             // button_ToTray
             // 
-            this.button_ToTray.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_ToTray.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.button_ToTray.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
             this.button_ToTray.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_ToTray.BackgroundImage")));
             this.button_ToTray.FlatAppearance.BorderSize = 0;
@@ -233,6 +239,7 @@
             // 
             // pictureBox_ERlogo
             // 
+            this.pictureBox_ERlogo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictureBox_ERlogo.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_ERlogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_ERlogo.Image")));
             this.pictureBox_ERlogo.Location = new System.Drawing.Point(10, 10);
@@ -258,7 +265,7 @@
             // 
             // button_Close
             // 
-            this.button_Close.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_Close.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.button_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
             this.button_Close.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_Close.BackgroundImage")));
             this.button_Close.FlatAppearance.BorderSize = 0;
@@ -274,13 +281,28 @@
             // panel_Mods
             // 
             this.panel_Mods.BackColor = System.Drawing.Color.Transparent;
-            this.panel_Mods.Controls.Add(this.listBox_Mods);
-            this.panel_Mods.Controls.Add(this.listBox_Version);
-            this.panel_Mods.Location = new System.Drawing.Point(0, 79);
+            this.panel_Mods.Controls.Add(this.tableLayoutPanel_mods);
+            this.panel_Mods.Location = new System.Drawing.Point(0, 80);
             this.panel_Mods.Name = "panel_Mods";
-            this.panel_Mods.Size = new System.Drawing.Size(1014, 523);
+            this.panel_Mods.Padding = new System.Windows.Forms.Padding(5, 5, 5, 10);
+            this.panel_Mods.Size = new System.Drawing.Size(1014, 522);
             this.panel_Mods.TabIndex = 21;
             this.panel_Mods.Visible = false;
+            // 
+            // tableLayoutPanel_mods
+            // 
+            this.tableLayoutPanel_mods.ColumnCount = 2;
+            this.tableLayoutPanel_mods.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel_mods.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel_mods.Controls.Add(this.listBox_Mods, 0, 0);
+            this.tableLayoutPanel_mods.Controls.Add(this.listBox_Version, 1, 0);
+            this.tableLayoutPanel_mods.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_mods.Location = new System.Drawing.Point(5, 5);
+            this.tableLayoutPanel_mods.Name = "tableLayoutPanel_mods";
+            this.tableLayoutPanel_mods.RowCount = 1;
+            this.tableLayoutPanel_mods.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel_mods.Size = new System.Drawing.Size(1004, 507);
+            this.tableLayoutPanel_mods.TabIndex = 7;
             // 
             // button_Mods
             // 
@@ -334,17 +356,27 @@
             this.panel_ClientMods.BackColor = System.Drawing.Color.Transparent;
             this.panel_ClientMods.Controls.Add(this.checkedList_ClientMods);
             this.panel_ClientMods.Controls.Add(this.label1);
-            this.panel_ClientMods.Location = new System.Drawing.Point(40, 100);
+            this.panel_ClientMods.Location = new System.Drawing.Point(0, 80);
             this.panel_ClientMods.Name = "panel_ClientMods";
-            this.panel_ClientMods.Padding = new System.Windows.Forms.Padding(0, 0, 32, 0);
-            this.panel_ClientMods.Size = new System.Drawing.Size(974, 473);
+            this.panel_ClientMods.Padding = new System.Windows.Forms.Padding(5, 5, 5, 10);
+            this.panel_ClientMods.Size = new System.Drawing.Size(1014, 522);
             this.panel_ClientMods.TabIndex = 7;
             this.panel_ClientMods.Visible = false;
+            // 
+            // checkedList_ClientMods
+            // 
+            this.checkedList_ClientMods.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedList_ClientMods.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedList_ClientMods.FormattingEnabled = true;
+            this.checkedList_ClientMods.Location = new System.Drawing.Point(5, 5);
+            this.checkedList_ClientMods.Name = "checkedList_ClientMods";
+            this.checkedList_ClientMods.Size = new System.Drawing.Size(1004, 507);
+            this.checkedList_ClientMods.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(70, 65);
+            this.label1.Location = new System.Drawing.Point(75, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 0;
@@ -354,10 +386,10 @@
             // 
             this.panel_ServerMods.BackColor = System.Drawing.Color.Transparent;
             this.panel_ServerMods.Controls.Add(this.checkedList_ServerMods);
-            this.panel_ServerMods.Location = new System.Drawing.Point(40, 100);
+            this.panel_ServerMods.Location = new System.Drawing.Point(0, 80);
             this.panel_ServerMods.Name = "panel_ServerMods";
-            this.panel_ServerMods.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.panel_ServerMods.Size = new System.Drawing.Size(942, 493);
+            this.panel_ServerMods.Padding = new System.Windows.Forms.Padding(5, 5, 5, 10);
+            this.panel_ServerMods.Size = new System.Drawing.Size(1014, 522);
             this.panel_ServerMods.TabIndex = 8;
             this.panel_ServerMods.Visible = false;
             // 
@@ -367,46 +399,34 @@
             this.checkedList_ServerMods.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.checkedList_ServerMods.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkedList_ServerMods.FormattingEnabled = true;
-            this.checkedList_ServerMods.Location = new System.Drawing.Point(0, 0);
+            this.checkedList_ServerMods.Location = new System.Drawing.Point(5, 5);
             this.checkedList_ServerMods.Name = "checkedList_ServerMods";
-            this.checkedList_ServerMods.Size = new System.Drawing.Size(942, 473);
+            this.checkedList_ServerMods.Size = new System.Drawing.Size(1004, 507);
             this.checkedList_ServerMods.Sorted = true;
             this.checkedList_ServerMods.TabIndex = 0;
-            // 
-            // checkedList_ClientMods
-            // 
-            this.checkedList_ClientMods.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedList_ClientMods.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkedList_ClientMods.FormattingEnabled = true;
-            this.checkedList_ClientMods.Location = new System.Drawing.Point(0, 0);
-            this.checkedList_ClientMods.Name = "checkedList_ClientMods";
-            this.checkedList_ClientMods.Size = new System.Drawing.Size(942, 473);
-            this.checkedList_ClientMods.TabIndex = 1;
             // 
             // ER_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1100, 600);
+            this.Controls.Add(this.panel_Mods);
             this.Controls.Add(this.panel_SideButt);
             this.Controls.Add(this.panel_ServerMods);
             this.Controls.Add(this.panel_ClientMods);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel_Mods);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1100, 600);
-            this.MinimumSize = new System.Drawing.Size(1100, 600);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ER_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ERealms Editor";
-            this.Load += new System.EventHandler(this.ER_Form_Load);
-            this.SizeChanged += new System.EventHandler(this.ER_Form_SizeChanged);
+            this.Resize += new System.EventHandler(this.ER_Form_Resize);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ERlogo)).EndInit();
             this.panel_Mods.ResumeLayout(false);
+            this.tableLayoutPanel_mods.ResumeLayout(false);
             this.panel_SideButt.ResumeLayout(false);
             this.panel_ClientMods.ResumeLayout(false);
             this.panel_ClientMods.PerformLayout();
@@ -441,6 +461,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckedListBox checkedList_ServerMods;
         private System.Windows.Forms.CheckedListBox checkedList_ClientMods;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_mods;
     }
 }
 
