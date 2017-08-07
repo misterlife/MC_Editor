@@ -261,7 +261,10 @@ namespace Elemental_DB_Editor
         {
             button_CVersion.Enabled = true;
         }
-
+        public void AddToCurrentVersion(string ModName)
+        {
+            listBox_Version.Items.Add(ModName);
+        }
         private void button_CVersion_Click(object sender, EventArgs e)
         {
                 new Form_CVersion().Show();

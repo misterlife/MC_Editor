@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AddMod));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button_Addmod = new System.Windows.Forms.Button();
+            this.checkBox_DirectMod = new System.Windows.Forms.CheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // textBox1
@@ -79,11 +82,25 @@
             this.button_Addmod.UseVisualStyleBackColor = true;
             this.button_Addmod.Click += new System.EventHandler(this.button_Addmod_Click);
             // 
+            // checkBox_DirectMod
+            // 
+            this.checkBox_DirectMod.AutoSize = true;
+            this.checkBox_DirectMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox_DirectMod.Location = new System.Drawing.Point(140, 3);
+            this.checkBox_DirectMod.Name = "checkBox_DirectMod";
+            this.checkBox_DirectMod.Size = new System.Drawing.Size(128, 17);
+            this.checkBox_DirectMod.TabIndex = 5;
+            this.checkBox_DirectMod.Text = "Add directly to Version";
+            this.toolTip1.SetToolTip(this.checkBox_DirectMod, "This only adds it to the version without refreshing the list.\r\nKeep in mind if th" +
+        "e list is refreshed before you commit\r\nthe mod will not be in the Version!");
+            this.checkBox_DirectMod.UseVisualStyleBackColor = true;
+            // 
             // Form_AddMod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 130);
+            this.Controls.Add(this.checkBox_DirectMod);
             this.Controls.Add(this.button_Addmod);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -108,5 +125,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button_Addmod;
+        private System.Windows.Forms.CheckBox checkBox_DirectMod;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
