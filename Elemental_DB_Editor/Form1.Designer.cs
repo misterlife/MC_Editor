@@ -443,6 +443,7 @@
             this.Name = "ER_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ERealms Editor";
+            this.Load += new System.EventHandler(this.ER_Form_Load);
             this.Resize += new System.EventHandler(this.ER_Form_Resize);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

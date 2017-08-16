@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
+using Octokit;
 
 namespace Elemental_DB_Editor
 {
@@ -16,7 +14,7 @@ namespace Elemental_DB_Editor
     {
         public string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\.minecraft\\ElementalRealms";
         public bool isRaw = false;
-        public string ERConnectionString, PackName="ElementalRealms";
+        public string ERConnectionString, LastEditorVNotification, PackName="ElementalRealms";
         public string[] SList_Mods;
         public List<string> AllMods = new List<string>();
         public List<string> AllVersions = new List<string>();
@@ -28,10 +26,32 @@ namespace Elemental_DB_Editor
             {
                 Path = Environment.GetEnvironmentVariable("ERealms", EnvironmentVariableTarget.User);
             }
+            if (!Directory.Exists(Path)) Directory.CreateDirectory(Path);
             InitializeComponent();
         }
 
+        private void ER_Form_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var MC_editor =new GitHubClient(new ProductHeaderValue("Elemental_Editor")).Repository.Release.GetLatest("ElementalRealms", "MC_Editor");
+                string LatestVersion = MC_editor.Result.TagName;
 
+                if (File.Exists(Path + "\\LastEditorNotification.log"))
+                {
+                    LastEditorVNotification = File.ReadAllText(Path + "\\LastEditorNotification.log");
+                }
+                if (LastEditorVNotification != LatestVersion)
+                {
+                    File.WriteAllText(Path + "\\LastEditorNotification.log", LatestVersion);
+                    if (MessageBox.Show(MC_editor.Result.Body + "\n Open releases?",
+                        MC_editor.Result.Name,
+                        MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        System.Diagnostics.Process.Start("https://github.com/ElementalRealms/MC_Editor/releases");
+                }
+            }
+            catch (AggregateException) { }
+        }
 
         private void button_StartRaw_Click(object sender, EventArgs e)
         {
@@ -435,6 +455,7 @@ namespace Elemental_DB_Editor
                 PAN.Location = new Point(0,Convert.ToInt32(panel2.Height));
             }
         }
+
         private void Resize_panel_MouseMove(object sender, MouseEventArgs e)
         {
             if (Resizing)
