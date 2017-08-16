@@ -20,6 +20,8 @@ namespace Elemental_DB_Editor
         public string[] SList_Mods;
         public List<string> AllMods = new List<string>();
         public List<string> AllVersions = new List<string>();
+        int MpY, MpX, Sw, Sh;
+        bool Resizing;
         public ER_Form()
         {
             if (Environment.GetEnvironmentVariable("ERealms", EnvironmentVariableTarget.User) != null)
@@ -424,16 +426,36 @@ namespace Elemental_DB_Editor
 
         private void ER_Form_Resize(object sender, EventArgs e)
         {
-            panel2.Size =new Size(this.Width,Convert.ToInt32(this.Height/7.5));
-            panel_SideButt.Size = new Size(Convert.ToInt32(this.Width/ 13.0952380952380952381), Convert.ToInt32(this.Height/ 1.14722753346080305927));
-            panel_SideButt.Location = new Point(Convert.ToInt32(this.Width / 1.08267716535433070866), Convert.ToInt32(this.Height / 7.59493670886075949367));
+            panel2.Size =new Size(this.Width,panel2.Size.Height);
+            panel_SideButt.Size = new Size(panel_SideButt.Size.Width, this.Height-panel2.Height);
+            panel_SideButt.Location = new Point(this.Width-panel_SideButt.Width , panel2.Size.Height);
             foreach (Panel PAN in new Panel[] { panel_Mods, panel_ServerMods, panel_ClientMods })
             {
                 PAN.Size =new Size(Convert.ToInt32(this.Width/ 1.0848126232741617357),Convert.ToInt32(this.Height/ 1.14942528735632183908));
                 PAN.Location = new Point(0,Convert.ToInt32(this.Height/ 7.5));
             }
         }
+        private void Resize_panel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (Resizing)
+            {
+                Width = MousePosition.X - MpX + Sw;
+                Height = MousePosition.Y - MpY + Sh;
+            }
+        }
 
+        private void Resize_panel_MouseDown(object sender, MouseEventArgs e)
+        {
+            Resizing = true;
+            MpY = MousePosition.Y;
+            MpX = MousePosition.X;
+            Sw = Width;
+            Sh = Height;
+        }
+        private void Resize_panel_MouseUp(object sender, MouseEventArgs e)
+        {
+            Resizing = false;
+        }
 
         public void RefreshLV()
         {

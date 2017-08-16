@@ -40,14 +40,15 @@
             this.button_Import = new System.Windows.Forms.Button();
             this.button_Export = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button_Close = new System.Windows.Forms.Button();
             this.button_ToTray = new System.Windows.Forms.Button();
             this.pictureBox_ERlogo = new System.Windows.Forms.PictureBox();
             this.temp_name = new System.Windows.Forms.Label();
-            this.button_Close = new System.Windows.Forms.Button();
             this.panel_Mods = new System.Windows.Forms.Panel();
             this.tableLayoutPanel_mods = new System.Windows.Forms.TableLayoutPanel();
             this.button_Mods = new System.Windows.Forms.Button();
             this.panel_SideButt = new System.Windows.Forms.Panel();
+            this.Resize_panel = new System.Windows.Forms.Panel();
             this.button_ServerMods = new System.Windows.Forms.Button();
             this.button_ClientMods = new System.Windows.Forms.Button();
             this.panel_ClientMods = new System.Windows.Forms.Panel();
@@ -229,6 +230,21 @@
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             this.panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
             // 
+            // button_Close
+            // 
+            this.button_Close.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.button_Close.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_Close.BackgroundImage")));
+            this.button_Close.FlatAppearance.BorderSize = 0;
+            this.button_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Close.Location = new System.Drawing.Point(1040, 15);
+            this.button_Close.Name = "button_Close";
+            this.button_Close.Size = new System.Drawing.Size(50, 50);
+            this.button_Close.TabIndex = 29;
+            this.button_Close.TabStop = false;
+            this.button_Close.UseVisualStyleBackColor = false;
+            this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
+            // 
             // button_ToTray
             // 
             this.button_ToTray.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -268,21 +284,6 @@
             this.temp_name.Size = new System.Drawing.Size(179, 25);
             this.temp_name.TabIndex = 15;
             this.temp_name.Text = "Elemental launcher ";
-            // 
-            // button_Close
-            // 
-            this.button_Close.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.button_Close.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_Close.BackgroundImage")));
-            this.button_Close.FlatAppearance.BorderSize = 0;
-            this.button_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Close.Location = new System.Drawing.Point(1040, 15);
-            this.button_Close.Name = "button_Close";
-            this.button_Close.Size = new System.Drawing.Size(50, 50);
-            this.button_Close.TabIndex = 29;
-            this.button_Close.TabStop = false;
-            this.button_Close.UseVisualStyleBackColor = false;
-            this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
             // 
             // panel_Mods
             // 
@@ -325,6 +326,7 @@
             // panel_SideButt
             // 
             this.panel_SideButt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.panel_SideButt.Controls.Add(this.Resize_panel);
             this.panel_SideButt.Controls.Add(this.button_ServerMods);
             this.panel_SideButt.Controls.Add(this.button_ClientMods);
             this.panel_SideButt.Controls.Add(this.button_Mods);
@@ -332,6 +334,19 @@
             this.panel_SideButt.Name = "panel_SideButt";
             this.panel_SideButt.Size = new System.Drawing.Size(84, 523);
             this.panel_SideButt.TabIndex = 23;
+            // 
+            // Resize_panel
+            // 
+            this.Resize_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Resize_panel.BackColor = System.Drawing.Color.Gray;
+            this.Resize_panel.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.Resize_panel.Location = new System.Drawing.Point(69, 508);
+            this.Resize_panel.Name = "Resize_panel";
+            this.Resize_panel.Size = new System.Drawing.Size(15, 15);
+            this.Resize_panel.TabIndex = 25;
+            this.Resize_panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Resize_panel_MouseDown);
+            this.Resize_panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Resize_panel_MouseMove);
+            this.Resize_panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Resize_panel_MouseUp);
             // 
             // button_ServerMods
             // 
@@ -421,6 +436,7 @@
             this.Controls.Add(this.panel_ServerMods);
             this.Controls.Add(this.panel_ClientMods);
             this.Controls.Add(this.panel2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -468,6 +484,7 @@
         private System.Windows.Forms.CheckedListBox checkedList_ServerMods;
         private System.Windows.Forms.CheckedListBox checkedList_ClientMods;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_mods;
+        private System.Windows.Forms.Panel Resize_panel;
     }
 }
 
