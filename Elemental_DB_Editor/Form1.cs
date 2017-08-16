@@ -431,8 +431,8 @@ namespace Elemental_DB_Editor
             panel_SideButt.Location = new Point(this.Width-panel_SideButt.Width , panel2.Size.Height);
             foreach (Panel PAN in new Panel[] { panel_Mods, panel_ServerMods, panel_ClientMods })
             {
-                PAN.Size =new Size(Convert.ToInt32(this.Width/ 1.0848126232741617357),Convert.ToInt32(this.Height/ 1.14942528735632183908));
-                PAN.Location = new Point(0,Convert.ToInt32(this.Height/ 7.5));
+                PAN.Size =new Size(this.Width - panel_SideButt.Width, this.Height - panel2.Height);
+                PAN.Location = new Point(0,Convert.ToInt32(panel2.Height));
             }
         }
         private void Resize_panel_MouseMove(object sender, MouseEventArgs e)
