@@ -145,10 +145,13 @@ namespace Elemental_DB_Editor
             {
                 SList_Mods = (dataReader["Server"].ToString()).Split(",".ToCharArray());
             }
-            foreach(string ToSelectMods in SList_Mods)
-            {
-                checkedList_ServerMods.SetItemChecked(checkedList_ServerMods.Items.IndexOf(ToSelectMods), true);
-            }
+            if (SList_Mods.Length > 1)
+                foreach (string ToSelectMods in SList_Mods)
+                {
+                    checkedList_ServerMods.SetItemChecked(checkedList_ServerMods.Items.IndexOf(ToSelectMods), true);
+                }
+            else if (SList_Mods.Length == 1 && SList_Mods[0]!="")
+                checkedList_ServerMods.SetItemChecked(checkedList_ServerMods.Items.IndexOf(SList_Mods[0]), true);
 
             dataReader.Close();
             button_submit.Enabled = true;
@@ -178,10 +181,13 @@ namespace Elemental_DB_Editor
             {
                 SList_Mods = (dataReader["Client"].ToString()).Split(",".ToCharArray());
             }
-            foreach (string ToSelectMods in SList_Mods)
-            {
-                checkedList_ClientMods.SetItemChecked(checkedList_ClientMods.Items.IndexOf(ToSelectMods), true);
-            }
+            if (SList_Mods.Length > 1)
+                foreach (string ToSelectMods in SList_Mods)
+                {
+                    checkedList_ServerMods.SetItemChecked(checkedList_ServerMods.Items.IndexOf(ToSelectMods), true);
+                }
+            else if (SList_Mods.Length == 1 && SList_Mods[0] != "")
+                checkedList_ServerMods.SetItemChecked(checkedList_ServerMods.Items.IndexOf(SList_Mods[0]), true);
 
             dataReader.Close();
             button_submit.Enabled = true;

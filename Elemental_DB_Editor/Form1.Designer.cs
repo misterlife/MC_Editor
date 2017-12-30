@@ -392,6 +392,7 @@
             this.checkedList_ClientMods.Location = new System.Drawing.Point(5, 5);
             this.checkedList_ClientMods.Name = "checkedList_ClientMods";
             this.checkedList_ClientMods.Size = new System.Drawing.Size(1004, 507);
+            this.checkedList_ClientMods.Sorted = true;
             this.checkedList_ClientMods.TabIndex = 1;
             // 
             // label1
