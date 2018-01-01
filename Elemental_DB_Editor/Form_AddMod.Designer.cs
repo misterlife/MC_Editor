@@ -111,8 +111,10 @@
             this.MaximumSize = new System.Drawing.Size(300, 169);
             this.MinimumSize = new System.Drawing.Size(300, 169);
             this.Name = "Form_AddMod";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Add Mods";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_AddMod_FormClosing);
+            this.Load += new System.EventHandler(this.Form_AddMod_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

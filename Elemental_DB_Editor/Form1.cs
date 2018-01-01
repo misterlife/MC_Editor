@@ -184,10 +184,10 @@ namespace Elemental_DB_Editor
             if (SList_Mods.Length > 1)
                 foreach (string ToSelectMods in SList_Mods)
                 {
-                    checkedList_ServerMods.SetItemChecked(checkedList_ServerMods.Items.IndexOf(ToSelectMods), true);
+                    checkedList_ClientMods.SetItemChecked(checkedList_ClientMods.Items.IndexOf(ToSelectMods), true);
                 }
             else if (SList_Mods.Length == 1 && SList_Mods[0] != "")
-                checkedList_ServerMods.SetItemChecked(checkedList_ServerMods.Items.IndexOf(SList_Mods[0]), true);
+                checkedList_ClientMods.SetItemChecked(checkedList_ClientMods.Items.IndexOf(SList_Mods[0]), true);
 
             dataReader.Close();
             button_submit.Enabled = true;

@@ -78,5 +78,11 @@ namespace Elemental_DB_Editor
             textBox1.Clear();
             textBox2.Clear();
         }
+
+        private void Form_AddMod_Load(object sender, EventArgs e)
+        {
+            Top = Cursor.Position.Y;
+            Left = Cursor.Position.X;
+        }
     }
 }
