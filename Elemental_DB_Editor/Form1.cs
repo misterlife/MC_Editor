@@ -145,13 +145,11 @@ namespace Elemental_DB_Editor
             {
                 SList_Mods = (dataReader["Server"].ToString()).Split(",".ToCharArray());
             }
-            if (SList_Mods.Length > 1)
+            if (SList_Mods.Length > 0 && SList_Mods[0] != "")
                 foreach (string ToSelectMods in SList_Mods)
                 {
                     checkedList_ServerMods.SetItemChecked(checkedList_ServerMods.Items.IndexOf(ToSelectMods), true);
                 }
-            else if (SList_Mods.Length == 1 && SList_Mods[0]!="")
-                checkedList_ServerMods.SetItemChecked(checkedList_ServerMods.Items.IndexOf(SList_Mods[0]), true);
 
             dataReader.Close();
             button_submit.Enabled = true;
@@ -181,13 +179,11 @@ namespace Elemental_DB_Editor
             {
                 SList_Mods = (dataReader["Client"].ToString()).Split(",".ToCharArray());
             }
-            if (SList_Mods.Length > 1)
+            if (SList_Mods.Length > 0 && SList_Mods[0] != "")
                 foreach (string ToSelectMods in SList_Mods)
                 {
                     checkedList_ClientMods.SetItemChecked(checkedList_ClientMods.Items.IndexOf(ToSelectMods), true);
                 }
-            else if (SList_Mods.Length == 1 && SList_Mods[0] != "")
-                checkedList_ClientMods.SetItemChecked(checkedList_ClientMods.Items.IndexOf(SList_Mods[0]), true);
 
             dataReader.Close();
             button_submit.Enabled = true;
@@ -448,6 +444,18 @@ namespace Elemental_DB_Editor
                 ThisButt.Location = new Point(ThisButt.Location.X, Pos);
                 Pos += 60;
             }
+        }
+
+        private void button_ToTray_Click(object sender, EventArgs e)
+        {
+            notifyIcon1.Visible = true;
+            Hide();
+        }
+
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            notifyIcon1.Visible = false;
+            Show();
         }
 
         private void ER_Form_Resize(object sender, EventArgs e)

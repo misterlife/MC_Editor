@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ER_Form));
             this.button_Login = new System.Windows.Forms.Button();
             this.button_submit = new System.Windows.Forms.Button();
@@ -43,7 +44,7 @@
             this.button_Close = new System.Windows.Forms.Button();
             this.button_ToTray = new System.Windows.Forms.Button();
             this.pictureBox_ERlogo = new System.Windows.Forms.PictureBox();
-            this.temp_name = new System.Windows.Forms.Label();
+            this.Label_Editor = new System.Windows.Forms.Label();
             this.panel_Mods = new System.Windows.Forms.Panel();
             this.tableLayoutPanel_mods = new System.Windows.Forms.TableLayoutPanel();
             this.button_Mods = new System.Windows.Forms.Button();
@@ -56,6 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel_ServerMods = new System.Windows.Forms.Panel();
             this.checkedList_ServerMods = new System.Windows.Forms.CheckedListBox();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ERlogo)).BeginInit();
             this.panel_Mods.SuspendLayout();
@@ -101,7 +103,7 @@
             this.comboBox_Versions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox_Versions.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_Versions.FormattingEnabled = true;
-            this.comboBox_Versions.Location = new System.Drawing.Point(732, 29);
+            this.comboBox_Versions.Location = new System.Drawing.Point(732, 26);
             this.comboBox_Versions.Name = "comboBox_Versions";
             this.comboBox_Versions.Size = new System.Drawing.Size(149, 24);
             this.comboBox_Versions.TabIndex = 4;
@@ -217,7 +219,7 @@
             this.panel2.Controls.Add(this.button_Export);
             this.panel2.Controls.Add(this.button_Import);
             this.panel2.Controls.Add(this.pictureBox_ERlogo);
-            this.panel2.Controls.Add(this.temp_name);
+            this.panel2.Controls.Add(this.Label_Editor);
             this.panel2.Controls.Add(this.button_submit);
             this.panel2.Controls.Add(this.button_addmod);
             this.panel2.Controls.Add(this.button_StartRaw);
@@ -258,6 +260,7 @@
             this.button_ToTray.TabIndex = 27;
             this.button_ToTray.TabStop = false;
             this.button_ToTray.UseVisualStyleBackColor = false;
+            this.button_ToTray.Click += new System.EventHandler(this.button_ToTray_Click);
             // 
             // pictureBox_ERlogo
             // 
@@ -272,18 +275,18 @@
             this.pictureBox_ERlogo.TabIndex = 26;
             this.pictureBox_ERlogo.TabStop = false;
             // 
-            // temp_name
+            // Label_Editor
             // 
-            this.temp_name.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.temp_name.AutoSize = true;
-            this.temp_name.BackColor = System.Drawing.Color.Transparent;
-            this.temp_name.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.temp_name.ForeColor = System.Drawing.Color.SeaShell;
-            this.temp_name.Location = new System.Drawing.Point(80, 25);
-            this.temp_name.Name = "temp_name";
-            this.temp_name.Size = new System.Drawing.Size(179, 25);
-            this.temp_name.TabIndex = 15;
-            this.temp_name.Text = "Elemental launcher ";
+            this.Label_Editor.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.Label_Editor.AutoSize = true;
+            this.Label_Editor.BackColor = System.Drawing.Color.Transparent;
+            this.Label_Editor.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Editor.ForeColor = System.Drawing.Color.SeaShell;
+            this.Label_Editor.Location = new System.Drawing.Point(80, 25);
+            this.Label_Editor.Name = "Label_Editor";
+            this.Label_Editor.Size = new System.Drawing.Size(150, 25);
+            this.Label_Editor.TabIndex = 15;
+            this.Label_Editor.Text = "Elemental Editor";
             // 
             // panel_Mods
             // 
@@ -427,6 +430,12 @@
             this.checkedList_ServerMods.Sorted = true;
             this.checkedList_ServerMods.TabIndex = 0;
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
+            // 
             // ER_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -474,7 +483,7 @@
         private System.Windows.Forms.Button button_Close;
         private System.Windows.Forms.Button button_ToTray;
         private System.Windows.Forms.PictureBox pictureBox_ERlogo;
-        private System.Windows.Forms.Label temp_name;
+        private System.Windows.Forms.Label Label_Editor;
         private System.Windows.Forms.Panel panel_Mods;
         private System.Windows.Forms.Button button_Mods;
         private System.Windows.Forms.Panel panel_SideButt;
@@ -487,6 +496,7 @@
         private System.Windows.Forms.CheckedListBox checkedList_ClientMods;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_mods;
         private System.Windows.Forms.Panel Resize_panel;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
