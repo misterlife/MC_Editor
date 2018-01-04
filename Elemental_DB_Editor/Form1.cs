@@ -41,13 +41,13 @@ namespace Elemental_DB_Editor
                 {
                     LastEditorVNotification = File.ReadAllText(Path + "\\LastEditorNotification.log");
                 }
-                if (LastEditorVNotification != LatestVersion)
+                File.WriteAllText(Path + "\\LastEditorNotification.log", LatestVersion);
+                if (LastEditorVNotification != LatestVersion && LastEditorVNotification !=null)
                 {
-                    File.WriteAllText(Path + "\\LastEditorNotification.log", LatestVersion);
-                    if (MessageBox.Show(MC_editor.Result.Body + "\n Open releases?",
+                    if (MessageBox.Show(MC_editor.Result.Body + "\n Open download?",
                         MC_editor.Result.Name,
                         MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        System.Diagnostics.Process.Start("https://github.com/ElementalRealms/MC_Editor/releases");
+                        System.Diagnostics.Process.Start("https://github.com/ElementalRealms/MC_Editor/releases/download/"+LatestVersion+"/Elemental_DB_Editor.exe");
                 }
             }
             catch (AggregateException) { }
