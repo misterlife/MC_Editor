@@ -5,9 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Net;
+using System.Net.Mime;
 
 namespace Elemental_DB_Editor
 {
@@ -42,6 +44,28 @@ namespace Elemental_DB_Editor
             else
             {
                 string FName = textBox1.Text, FLink = textBox2.Text;
+                if (FName == ""&&FLink!="")
+                {
+                    if (FLink.EndsWith(".jar"))
+                        FName = System.IO.Path.GetFileName(FLink);
+                    if (FName == ""){
+                        string ForwardUri = WebRequest.Create(FLink).GetResponse().ResponseUri.ToString();
+                        if (ForwardUri.EndsWith(".jar"))
+                            FName = System.IO.Path.GetFileName(ForwardUri);
+                        //Get name from header
+                        if (FName == "")
+                            using (WebClient client = new WebClient())
+                            {
+                                client.OpenRead(FLink);
+                                try {
+                                    string HeaderName = new ContentDisposition(client.ResponseHeaders["content-disposition"]).FileName;
+                                    if (HeaderName != null)
+                                        FName = HeaderName;
+                                }
+                                catch { MessageBox.Show("Could not resolve FileName"); }
+                            }
+                    }
+                }
                 if (!Program.erForm.AllMods.Contains(FName))
                 {
                     MySqlConnection conn = new MySqlConnection(Program.erForm.ERConnectionString);
@@ -63,15 +87,22 @@ namespace Elemental_DB_Editor
                     if (checkBox_DirectMod.Checked)
                     {
                         Program.erForm.AddToCurrentVersion(FName);
+                        Program.erForm.SelectMod_Version(FName);
                     }
                     else
                     {
                         Program.erForm.RefreshLV();
+                        Program.erForm.SelectMod_Mods(FName);
                     }
                 }
                 else
                     MessageBox.Show("The mod you are trying to add exists", "ERealms Feedback",
                                      MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                AddModText = "Added: " + FName;
+                new Thread(()=> {
+                    Thread.Sleep(2000);
+                    Invoke(new MethodInvoker(delegate () { AddModText = "Submit"; }));
+                }).Start();
             }
             textBox1.Enabled = true;
             textBox2.Enabled = true;
@@ -83,6 +114,23 @@ namespace Elemental_DB_Editor
         {
             Top = Cursor.Position.Y;
             Left = Cursor.Position.X;
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox2.Select();
+        }
+
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                button_Addmod.PerformClick();
+        }
+        public string AddModText{
+            set{
+                button_Addmod.Text = value;
+            }
         }
     }
 }

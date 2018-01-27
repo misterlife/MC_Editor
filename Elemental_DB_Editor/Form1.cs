@@ -491,6 +491,14 @@ namespace Elemental_DB_Editor
         {
             Resizing = false;
         }
+        public void SelectMod_Version(string name)
+        {
+            listBox_Version.SelectedIndex = listBox_Version.FindStringExact(name);
+        }
+        public void SelectMod_Mods(string name)
+        {
+            listBox_Mods.SelectedIndex = listBox_Mods.FindStringExact(name);
+        }
 
         public void RefreshLV()
         {
