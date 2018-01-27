@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
 using Octokit;
+using System.Threading;
 
 namespace Elemental_DB_Editor
 {
@@ -97,6 +98,7 @@ namespace Elemental_DB_Editor
 
         private void button_submit_Click(object sender, EventArgs e)
         {
+            button_submit.Text = "Commiting";
             comboBox_Versions.Enabled = false;
             listBox_Mods.Enabled = false;
             listBox_Version.Enabled = false;
@@ -115,12 +117,15 @@ namespace Elemental_DB_Editor
             cmd.ExecuteNonQuery();
 
             cmd.Connection.Close();
-            MessageBox.Show("Sucess", "ERealms Feedback",
-                                 MessageBoxButtons.OK, MessageBoxIcon.None);
             RefreshSV();
             comboBox_Versions.Enabled = true;
             listBox_Mods.Enabled = true;
             listBox_Version.Enabled = true;
+            button_submit.Text = "Sucess";
+            new Thread(() => {
+                Thread.Sleep(1000);
+                Invoke(new MethodInvoker(delegate () { button_submit.Text = "Commit Modlist"; }));
+            }).Start();
         }
         private void RefreshServerModsList()
         {
@@ -307,7 +312,7 @@ namespace Elemental_DB_Editor
             {
                 conn.Open();
             }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
+            catch (MySqlException ex)
             {
                 Console.Write(ex.Message);
                 MessageBox.Show(ex.Message, "ERealms user error",
@@ -513,7 +518,7 @@ namespace Elemental_DB_Editor
             {
                 conn.OpenAsync();
             }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
+            catch (MySqlException ex)
             {
                 Console.Write(ex.Message);
                 MessageBox.Show(ex.Message, "ERealms user error",
