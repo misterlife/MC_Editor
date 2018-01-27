@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -19,7 +13,6 @@ namespace Elemental_DB_Editor
         {
             InitializeComponent();
         }
-
 
         private void Form_AddMod_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -49,15 +42,17 @@ namespace Elemental_DB_Editor
                     if (FLink.EndsWith(".jar"))
                         FName = System.IO.Path.GetFileName(FLink);
                     if (FName == ""){
-                        string ForwardUri = WebRequest.Create(FLink).GetResponse().ResponseUri.ToString();
-                        if (ForwardUri.EndsWith(".jar"))
-                            FName = System.IO.Path.GetFileName(ForwardUri);
+                        try {
+                            string ForwardUri = WebRequest.Create(FLink).GetResponse().ResponseUri.ToString();
+                            if (ForwardUri.EndsWith(".jar"))
+                                FName = System.IO.Path.GetFileName(ForwardUri);
+                        }catch {}
                         //Get name from header
                         if (FName == "")
                             using (WebClient client = new WebClient())
                             {
-                                client.OpenRead(FLink);
                                 try {
+                                    client.OpenRead(FLink);
                                     string HeaderName = new ContentDisposition(client.ResponseHeaders["content-disposition"]).FileName;
                                     if (HeaderName != null)
                                         FName = HeaderName;
@@ -98,10 +93,10 @@ namespace Elemental_DB_Editor
                 else
                     MessageBox.Show("The mod you are trying to add exists", "ERealms Feedback",
                                      MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                AddModText = "Added: " + FName;
+                button_Addmod.Text = "Added: " + FName;
                 new Thread(()=> {
                     Thread.Sleep(2000);
-                    Invoke(new MethodInvoker(delegate () { AddModText = "Submit"; }));
+                    Invoke(new MethodInvoker(delegate () { button_Addmod.Text = "Submit"; }));
                 }).Start();
             }
             textBox1.Enabled = true;
@@ -127,10 +122,13 @@ namespace Elemental_DB_Editor
             if (e.KeyCode == Keys.Enter)
                 button_Addmod.PerformClick();
         }
-        public string AddModText{
-            set{
-                button_Addmod.Text = value;
-            }
+
+        private void textBox2_DoubleClick(object sender, EventArgs e){
+            textBox2.Text = Clipboard.GetText();
+        }
+
+        private void textBox1_DoubleClick(object sender, EventArgs e){
+            textBox1.Text = Clipboard.GetText();
         }
     }
 }
