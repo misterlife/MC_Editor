@@ -21,14 +21,14 @@ namespace Elemental_DB_Editor
 
         private void button_Addmod_Click(object sender, EventArgs e)
         {
-            textBox1.Enabled = false;
-            textBox2.Enabled = false;
+            SwitchUI(false);
             if (Program.erForm.isRaw)
             {
                 if (checkBox_DirectMod.Checked)
                 {
                     MessageBox.Show("Direct add does not support the RAW format");
                     checkBox_DirectMod.Checked = false;
+                    SwitchUI(true);
                     return;
                 }
                 Program.erForm.AllMods.Add(textBox1.Text+"@"+textBox2.Text);
@@ -43,11 +43,14 @@ namespace Elemental_DB_Editor
                         FName = System.IO.Path.GetFileName(FLink);
                     if (FName == ""){
                         try {
-                            string ForwardUri = WebRequest.Create(FLink).GetResponse().ResponseUri.ToString();
+                            WebRequest webReq= WebRequest.Create(FLink);
+                            webReq.Timeout = 7000;
+                            string ForwardUri = webReq.GetResponse().ResponseUri.ToString();
                             if (ForwardUri.EndsWith(".jar"))
                                 FName = System.IO.Path.GetFileName(ForwardUri);
                         }catch {}
-                        //Get name from header
+                        //Timeout is long and not nececery for any current website with MC mods
+                        /*Get name from header
                         if (FName == "")
                             using (WebClient client = new WebClient())
                             {
@@ -57,9 +60,27 @@ namespace Elemental_DB_Editor
                                     if (HeaderName != null)
                                         FName = HeaderName;
                                 }
-                                catch { MessageBox.Show("Could not resolve FileName"); }
+                                catch {
+                                    button_Addmod.Text="Could not resolve FileName";
+                                    ResetButtonText();
+                                }
                             }
+                            */
+                        if (FName == "")
+                        {
+                            SwitchUI(true);
+                            button_Addmod.Text = "Failed to resolve name";
+                            ResetButtonText(3000);
+                            return;
+                        }
                     }
+                }
+                if (FLink == "")
+                {
+                    SwitchUI(true);
+                    button_Addmod.Text = "Missing download link";
+                    ResetButtonText(3000);
+                    return;
                 }
                 if (!Program.erForm.AllMods.Contains(FName))
                 {
@@ -70,12 +91,14 @@ namespace Elemental_DB_Editor
                     try
                     {
                         cmd.ExecuteNonQuery();
-                    }catch(MySqlException ex)
+                        button_Addmod.Text = "Added: " + FName;
+                    }
+                    catch (MySqlException ex)
                     {
-                        MessageBox.Show("Failed to commit mod: \n "+ex.ToString(), "ERealms Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        textBox1.Enabled = true;
-                        textBox2.Enabled = true;
+                        if(MessageBox.Show("Copy to clipboard? \n" + ex.ToString(), "ERealms Error",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)==DialogResult.Yes)
+                            Clipboard.SetText(ex.ToString());
+                        SwitchUI(true);
                         return;
                     }
                     conn.CloseAsync();
@@ -90,35 +113,43 @@ namespace Elemental_DB_Editor
                         Program.erForm.SelectMod_Mods(FName);
                     }
                 }
-                else
-                    MessageBox.Show("The mod you are trying to add exists", "ERealms Feedback",
-                                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                button_Addmod.Text = "Added: " + FName;
-                new Thread(()=> {
-                    Thread.Sleep(2000);
-                    Invoke(new MethodInvoker(delegate () { button_Addmod.Text = "Submit"; }));
-                }).Start();
+                else {
+                    button_Addmod.Text = "Mod already exists";
+                }
+                ResetButtonText();
             }
-            textBox1.Enabled = true;
-            textBox2.Enabled = true;
+            SwitchUI(true);
             textBox1.Clear();
             textBox2.Clear();
         }
 
-        private void Form_AddMod_Load(object sender, EventArgs e)
+        private void ResetButtonText(int i=2000)
         {
+            new Thread(() => {
+                Thread.Sleep(i);
+            try{ Invoke(new MethodInvoker(delegate () { button_Addmod.Text = "Submit"; })); } catch { }
+            }).Start();
+        }
+
+        private void SwitchUI(bool State)
+        {
+            textBox1.Enabled = State;
+            textBox2.Enabled = State;
+            button_Addmod.Enabled = State;
+            checkBox_DirectMod.Enabled = State;
+        }
+
+        private void Form_AddMod_Load(object sender, EventArgs e){
             Top = Cursor.Position.Y;
             Left = Cursor.Position.X;
         }
 
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
+        private void textBox1_KeyDown(object sender, KeyEventArgs e){
             if (e.KeyCode == Keys.Enter)
                 textBox2.Select();
         }
 
-        private void textBox2_KeyDown(object sender, KeyEventArgs e)
-        {
+        private void textBox2_KeyDown(object sender, KeyEventArgs e){
             if (e.KeyCode == Keys.Enter)
                 button_Addmod.PerformClick();
         }
