@@ -217,12 +217,13 @@ namespace Elemental_DB_Editor
                     RefreshLRaw();
                     comboBox_Versions.Enabled = true;
                 }
-                    else
-                    {
-                        string selected = listBox_Version.SelectedItem.ToString();
-                        listBox_Mods.Items.Add(selected);
-                        listBox_Version.Items.Remove(selected);
-                    }
+                else
+                {
+                    string selected = listBox_Version.SelectedItem.ToString();
+                    listBox_Mods.Items.Add(selected);
+                    listBox_Mods.SelectedIndex = listBox_Mods.FindStringExact(selected);
+                    listBox_Version.Items.Remove(selected);
+                }
             }
         }
         private void listBox_Mods_DoubleClick(object sender, EventArgs e)
@@ -238,7 +239,7 @@ namespace Elemental_DB_Editor
                         if (curVer[0] == comboBox_Versions.Text)
                         {
                             List<string> tmp519 = curVer[8].Split('|').ToList();
-                            for (int i2=0;i2<AllMods.Count;i2++)
+                            for (int i2 = 0; i2 < AllMods.Count; i2++)
                             {
                                 string tmp120 = listBox_Mods.SelectedItem.ToString();
                                 if (AllMods[i2] == tmp120)
@@ -255,12 +256,13 @@ namespace Elemental_DB_Editor
                     RefreshLRaw();
                     comboBox_Versions.Enabled = true;
                 }
-                    else
-                    {
-                        string selected = listBox_Mods.SelectedItem.ToString();
-                        listBox_Version.Items.Add(selected);
-                        listBox_Mods.Items.Remove(selected);
-                    }
+                else
+                {
+                    string selected = listBox_Mods.SelectedItem.ToString();
+                    listBox_Version.Items.Add(selected);
+                    listBox_Version.SelectedIndex = listBox_Version.FindStringExact(selected);
+                    listBox_Mods.Items.Remove(selected);
+                }
             }
         }
 
@@ -283,25 +285,33 @@ namespace Elemental_DB_Editor
                 button_addmod.Visible = false;
         }
 
-        public void ABOn(){
-            button_addmod.Visible = true;
+        public bool VisAddButton{
+            set{
+                button_addmod.Visible = value;
+            }
         }
-        public void VCOn()
-        {
-            button_CVersion.Enabled = true;
+        public bool VisVersionButton{
+            set{
+                button_CVersion.Enabled = value;
+            }
         }
-        public void AddToCurrentVersion(string ModName)
+        public void SelectMod(string value, bool toVersion)
         {
-            listBox_Version.Items.Add(ModName);
+            listBox_Version.Items.Add(value);
+            listBox_Mods.Items.Add(value);
+            checkedList_ClientMods.Items.Add(value);
+            checkedList_ServerMods.Items.Add(value);
+            checkedList_ServerMods.SelectedIndex = checkedList_ServerMods.FindStringExact(value);
+            checkedList_ClientMods.SelectedIndex = checkedList_ClientMods.FindStringExact(value);
+            if (toVersion)
+                listBox_Version.SelectedIndex = listBox_Version.FindStringExact(value);
+            else
+                listBox_Mods.SelectedIndex = listBox_Mods.FindStringExact(value);
         }
         private void button_CVersion_Click(object sender, EventArgs e)
         {
                 new Form_CVersion().Show();
                 button_CVersion.Enabled = false;
-        }
-        public string SelectedVersion()
-        {
-            return comboBox_Versions.Text;
         }
         public void RefreshSV()
         {
@@ -495,14 +505,6 @@ namespace Elemental_DB_Editor
         private void Resize_panel_MouseUp(object sender, MouseEventArgs e)
         {
             Resizing = false;
-        }
-        public void SelectMod_Version(string name)
-        {
-            listBox_Version.SelectedIndex = listBox_Version.FindStringExact(name);
-        }
-        public void SelectMod_Mods(string name)
-        {
-            listBox_Mods.SelectedIndex = listBox_Mods.FindStringExact(name);
         }
 
         public void RefreshLV()

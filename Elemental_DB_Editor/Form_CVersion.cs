@@ -45,7 +45,7 @@ namespace Elemental_DB_Editor
             else
             {
                 Program.erForm.RefreshSV();
-                Program.erForm.VCOn();
+                Program.erForm.VisVersionButton = true;
             }
         }
 

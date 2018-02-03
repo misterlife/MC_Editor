@@ -16,7 +16,7 @@ namespace Elemental_DB_Editor
 
         private void Form_AddMod_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Program.erForm.ABOn();
+            Program.erForm.VisAddButton = true;
         }
 
         private void button_Addmod_Click(object sender, EventArgs e)
@@ -102,16 +102,8 @@ namespace Elemental_DB_Editor
                         return;
                     }
                     conn.CloseAsync();
-                    if (checkBox_DirectMod.Checked)
-                    {
-                        Program.erForm.AddToCurrentVersion(FName);
-                        Program.erForm.SelectMod_Version(FName);
-                    }
-                    else
-                    {
-                        Program.erForm.RefreshLV();
-                        Program.erForm.SelectMod_Mods(FName);
-                    }
+                    Program.erForm.SelectMod(FName, checkBox_DirectMod.Checked);
+
                 }
                 else {
                     button_Addmod.Text = "Mod already exists";

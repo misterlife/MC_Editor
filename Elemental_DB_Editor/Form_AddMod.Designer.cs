@@ -100,9 +100,7 @@
             this.checkBox_DirectMod.TabIndex = 5;
             this.checkBox_DirectMod.TabStop = false;
             this.checkBox_DirectMod.Text = "To Version";
-            this.toolTip1.SetToolTip(this.checkBox_DirectMod, "This only adds it to the version without refreshing the list.\r\nKeep in mind if th" +
-        "e list is refreshed before you commit\r\nthe mod will not be in the Version!\r\nIt w" +
-        "ill also select the mod");
+            this.toolTip1.SetToolTip(this.checkBox_DirectMod, "This only adds it to the version.\r\nKeep in mind you still have to commit!");
             this.checkBox_DirectMod.UseVisualStyleBackColor = true;
             // 
             // Form_AddMod
